@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.onfido</groupId>
     <artifactId>onfido-java</artifactId>
-    <version>1.1.1</version>
+    <version>1.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.onfido:onfido-java:1.1.1"
+compile "com.onfido:onfido-java:1.2.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/onfido-java-1.1.1.jar
+* target/onfido-java-1.2.0.jar
 * target/lib/*.jar
 
 ## Getting Started

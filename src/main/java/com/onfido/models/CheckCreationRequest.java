@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * CheckCreationRequest
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-27T17:09:58.121Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T08:37:28.149Z")
 public class CheckCreationRequest   {
   @SerializedName("type")
   private String type = null;
@@ -62,6 +62,12 @@ public class CheckCreationRequest   {
 
   @SerializedName("charge_applicant_for_check")
   private Boolean chargeApplicantForCheck = null;
+
+  @SerializedName("brand_id")
+  private String brandId = null;
+
+  @SerializedName("async")
+  private Boolean async = null;
 
   public CheckCreationRequest type(String type) {
     this.type = type;
@@ -222,6 +228,42 @@ public class CheckCreationRequest   {
     this.chargeApplicantForCheck = chargeApplicantForCheck;
   }
 
+  public CheckCreationRequest brandId(String brandId) {
+    this.brandId = brandId;
+    return this;
+  }
+
+   /**
+   * ID of the brand under which the check should be conducted. Optional.
+   * @return brandId
+  **/
+  @ApiModelProperty(example = "null", value = "ID of the brand under which the check should be conducted. Optional.")
+  public String getBrandId() {
+    return brandId;
+  }
+
+  public void setBrandId(String brandId) {
+    this.brandId = brandId;
+  }
+
+  public CheckCreationRequest async(Boolean async) {
+    this.async = async;
+    return this;
+  }
+
+   /**
+   * If this is set to true, checks will be queued for processing and no reports will be returned immediately. Defaults to false
+   * @return async
+  **/
+  @ApiModelProperty(example = "null", value = "If this is set to true, checks will be queued for processing and no reports will be returned immediately. Defaults to false")
+  public Boolean getAsync() {
+    return async;
+  }
+
+  public void setAsync(Boolean async) {
+    this.async = async;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -239,12 +281,14 @@ public class CheckCreationRequest   {
         Objects.equals(this.criminalHistoryReportDetails, checkCreationRequest.criminalHistoryReportDetails) &&
         Objects.equals(this.tags, checkCreationRequest.tags) &&
         Objects.equals(this.suppressFormEmails, checkCreationRequest.suppressFormEmails) &&
-        Objects.equals(this.chargeApplicantForCheck, checkCreationRequest.chargeApplicantForCheck);
+        Objects.equals(this.chargeApplicantForCheck, checkCreationRequest.chargeApplicantForCheck) &&
+        Objects.equals(this.brandId, checkCreationRequest.brandId) &&
+        Objects.equals(this.async, checkCreationRequest.async);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, redirectUri, reports, reportTypeGroups, criminalHistoryReportDetails, tags, suppressFormEmails, chargeApplicantForCheck);
+    return Objects.hash(type, redirectUri, reports, reportTypeGroups, criminalHistoryReportDetails, tags, suppressFormEmails, chargeApplicantForCheck, brandId, async);
   }
 
   @Override
@@ -260,6 +304,8 @@ public class CheckCreationRequest   {
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    suppressFormEmails: ").append(toIndentedString(suppressFormEmails)).append("\n");
     sb.append("    chargeApplicantForCheck: ").append(toIndentedString(chargeApplicantForCheck)).append("\n");
+    sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");
+    sb.append("    async: ").append(toIndentedString(async)).append("\n");
     sb.append("}");
     return sb.toString();
   }

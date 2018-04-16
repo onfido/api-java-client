@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * GenericAddress
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-27T17:09:58.121Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T08:37:28.149Z")
 public class GenericAddress   {
   @SerializedName("flat_number")
   private String flatNumber = null;
