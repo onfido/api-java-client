@@ -109,8 +109,8 @@ public class DefaultApiExample {
         try {
             Applicant newApplicant = apiInstance.createApplicant(applicant);
             String applicantId = newApplicant.getId();
-            check.setApplicantId(applicantId);
-            Check newCheck = apiInstance.createCheck(check);
+            System.out.println("Applicant ID: " + applicantId);
+            Check newCheck = apiInstance.createCheck(applicantId, check);
             System.out.println(newCheck);
         } catch (ApiException e) {
             System.err.println("Exception creating an applicant/check");
