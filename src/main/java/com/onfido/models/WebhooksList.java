@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * WebhooksList
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T08:37:28.149Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-18T15:35:10.284Z")
 public class WebhooksList   {
   @SerializedName("webhooks")
   private List<Webhook> webhooks = new ArrayList<Webhook>();

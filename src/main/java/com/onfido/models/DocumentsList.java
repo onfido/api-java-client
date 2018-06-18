@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * DocumentsList
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-04-16T08:37:28.149Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-18T15:35:10.284Z")
 public class DocumentsList   {
   @SerializedName("documents")
   private List<Document> documents = new ArrayList<Document>();

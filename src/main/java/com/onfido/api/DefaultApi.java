@@ -1717,7 +1717,7 @@ public class DefaultApi {
         return call;
     }
     /* Build call for listApplicants */
-    private com.squareup.okhttp.Call listApplicantsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listApplicantsCall(String page, String perPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
 
@@ -1725,6 +1725,10 @@ public class DefaultApi {
         String localVarPath = "/applicants".replaceAll("\\{format\\}","json");
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (page != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        if (perPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "per_page", perPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1761,22 +1765,26 @@ public class DefaultApi {
     /**
      * List Applicants
      * 
+     * @param page The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; (optional)
+     * @param perPage The number of objects per page. Defaults to 20 if omitted. (optional)
      * @return ApplicantsList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApplicantsList listApplicants() throws ApiException {
-        ApiResponse<ApplicantsList> resp = listApplicantsWithHttpInfo();
+    public ApplicantsList listApplicants(String page, String perPage) throws ApiException {
+        ApiResponse<ApplicantsList> resp = listApplicantsWithHttpInfo(page, perPage);
         return resp.getData();
     }
 
     /**
      * List Applicants
      * 
+     * @param page The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; (optional)
+     * @param perPage The number of objects per page. Defaults to 20 if omitted. (optional)
      * @return ApiResponse&lt;ApplicantsList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApplicantsList> listApplicantsWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = listApplicantsCall(null, null);
+    public ApiResponse<ApplicantsList> listApplicantsWithHttpInfo(String page, String perPage) throws ApiException {
+        com.squareup.okhttp.Call call = listApplicantsCall(page, perPage, null, null);
         Type localVarReturnType = new TypeToken<ApplicantsList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1784,11 +1792,13 @@ public class DefaultApi {
     /**
      * List Applicants (asynchronously)
      * 
+     * @param page The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; (optional)
+     * @param perPage The number of objects per page. Defaults to 20 if omitted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listApplicantsAsync(final ApiCallback<ApplicantsList> callback) throws ApiException {
+    public com.squareup.okhttp.Call listApplicantsAsync(String page, String perPage, final ApiCallback<ApplicantsList> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1809,13 +1819,13 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = listApplicantsCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listApplicantsCall(page, perPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApplicantsList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for listChecks */
-    private com.squareup.okhttp.Call listChecksCall(String applicantId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listChecksCall(String applicantId, String page, String perPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // verify the required parameter 'applicantId' is set
@@ -1829,6 +1839,10 @@ public class DefaultApi {
         .replaceAll("\\{" + "applicant_id" + "\\}", apiClient.escapeString(applicantId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (page != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+        if (perPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "per_page", perPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1866,11 +1880,13 @@ public class DefaultApi {
      * Retrieve Checks
      * 
      * @param applicantId  (required)
+     * @param page The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; (optional)
+     * @param perPage The number of objects per page. Defaults to 20 if omitted. (optional)
      * @return ChecksList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ChecksList listChecks(String applicantId) throws ApiException {
-        ApiResponse<ChecksList> resp = listChecksWithHttpInfo(applicantId);
+    public ChecksList listChecks(String applicantId, String page, String perPage) throws ApiException {
+        ApiResponse<ChecksList> resp = listChecksWithHttpInfo(applicantId, page, perPage);
         return resp.getData();
     }
 
@@ -1878,11 +1894,13 @@ public class DefaultApi {
      * Retrieve Checks
      * 
      * @param applicantId  (required)
+     * @param page The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; (optional)
+     * @param perPage The number of objects per page. Defaults to 20 if omitted. (optional)
      * @return ApiResponse&lt;ChecksList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ChecksList> listChecksWithHttpInfo(String applicantId) throws ApiException {
-        com.squareup.okhttp.Call call = listChecksCall(applicantId, null, null);
+    public ApiResponse<ChecksList> listChecksWithHttpInfo(String applicantId, String page, String perPage) throws ApiException {
+        com.squareup.okhttp.Call call = listChecksCall(applicantId, page, perPage, null, null);
         Type localVarReturnType = new TypeToken<ChecksList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1891,11 +1909,13 @@ public class DefaultApi {
      * Retrieve Checks (asynchronously)
      * 
      * @param applicantId  (required)
+     * @param page The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; (optional)
+     * @param perPage The number of objects per page. Defaults to 20 if omitted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listChecksAsync(String applicantId, final ApiCallback<ChecksList> callback) throws ApiException {
+    public com.squareup.okhttp.Call listChecksAsync(String applicantId, String page, String perPage, final ApiCallback<ChecksList> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1916,7 +1936,7 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = listChecksCall(applicantId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listChecksCall(applicantId, page, perPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ChecksList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

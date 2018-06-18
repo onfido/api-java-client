@@ -315,7 +315,9 @@ public class DefaultApiTest {
      */
     @Test
     public void listApplicantsTest() throws ApiException {
-        // ApplicantsList response = api.listApplicants();
+        String page = null;
+        String perPage = null;
+        // ApplicantsList response = api.listApplicants(page, perPage);
 
         // TODO: test validations
     }
@@ -331,7 +333,9 @@ public class DefaultApiTest {
     @Test
     public void listChecksTest() throws ApiException {
         String applicantId = null;
-        // ChecksList response = api.listChecks(applicantId);
+        String page = null;
+        String perPage = null;
+        // ChecksList response = api.listChecks(applicantId, page, perPage);
 
         // TODO: test validations
     }

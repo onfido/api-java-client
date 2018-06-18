@@ -692,7 +692,7 @@ Name | Type | Description  | Notes
 
 <a name="listApplicants"></a>
 # **listApplicants**
-> ApplicantsList listApplicants()
+> ApplicantsList listApplicants(page, perPage)
 
 List Applicants
 
@@ -713,8 +713,10 @@ Token.setApiKey("token=" + "YOUR API KEY");
 Token.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
+String page = "page_example"; // String | The page to return. Defaults to the first page if omitted. The first page is `page=1`
+String perPage = "perPage_example"; // String | The number of objects per page. Defaults to 20 if omitted.
 try {
-    ApplicantsList result = apiInstance.listApplicants();
+    ApplicantsList result = apiInstance.listApplicants(page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listApplicants");
@@ -723,7 +725,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **String**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional]
+ **perPage** | **String**| The number of objects per page. Defaults to 20 if omitted. | [optional]
 
 ### Return type
 
@@ -731,7 +737,7 @@ This endpoint does not need any parameter.
 
 <a name="listChecks"></a>
 # **listChecks**
-> ChecksList listChecks(applicantId)
+> ChecksList listChecks(applicantId, page, perPage)
 
 Retrieve Checks
 
@@ -753,8 +759,10 @@ Token.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
+String page = "page_example"; // String | The page to return. Defaults to the first page if omitted. The first page is `page=1`
+String perPage = "perPage_example"; // String | The number of objects per page. Defaults to 20 if omitted.
 try {
-    ChecksList result = apiInstance.listChecks(applicantId);
+    ChecksList result = apiInstance.listChecks(applicantId, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listChecks");
@@ -767,6 +775,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicantId** | **String**|  |
+ **page** | **String**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional]
+ **perPage** | **String**| The number of objects per page. Defaults to 20 if omitted. | [optional]
 
 ### Return type
 
