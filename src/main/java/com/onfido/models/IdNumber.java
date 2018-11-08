@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * IdNumber
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-18T15:35:10.284Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-08T15:53:45.225Z")
 public class IdNumber   {
   @SerializedName("type")
   private String type = null;

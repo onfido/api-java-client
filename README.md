@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.onfido</groupId>
     <artifactId>onfido-java</artifactId>
-    <version>1.3.0</version>
+    <version>1.4.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.onfido:onfido-java:1.3.0"
+compile "com.onfido:onfido-java:1.4.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/onfido-java-1.3.0.jar
+* target/onfido-java-1.4.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -76,6 +76,9 @@ public class DefaultApiExample {
         ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
         Token.setApiKey("token=" + "YOUR API KEY");
         Token.setApiKeyPrefix("Token");
+
+        // Limit the at-rest region, if needed (optional, see https://documentation.onfido.com/#regions)
+        defaultClient.setRegion("YOUR_REGION");
 
         DefaultApi apiInstance = new DefaultApi();
         // setting applicant details

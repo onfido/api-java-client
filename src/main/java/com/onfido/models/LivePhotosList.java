@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * LivePhotosList
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-06-18T15:35:10.284Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-08T15:53:45.225Z")
 public class LivePhotosList   {
   @SerializedName("live_photos")
   private List<LivePhoto> livePhotos = new ArrayList<LivePhoto>();

@@ -124,7 +124,7 @@ public class ApiClient {
      */
     public static final String LENIENT_DATETIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 
-    private String basePath = "https://api.onfido.com/v2";
+    private String region = null;
     private boolean lenientOnJson = false;
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
@@ -169,7 +169,7 @@ public class ApiClient {
         this.lenientDatetimeFormat = true;
 
         // Set default User-Agent.
-        setUserAgent("Onfido/1.3.0/java");
+        setUserAgent("Onfido/1.4.0/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
@@ -179,22 +179,22 @@ public class ApiClient {
     }
 
     /**
-     * Get base path
+     * Get region
      *
-     * @return Baes path
+     * @return Region
      */
-    public String getBasePath() {
-        return basePath;
+    public String getRegion() {
+        return region;
     }
 
     /**
-     * Set base path
+     * Set region
      *
-     * @param basePath Base path of the URL (e.g https://api.onfido.com/v2
+     * @param region Region to set (e.g "us")
      * @return An instance of OkHttpClient
      */
-    public ApiClient setBasePath(String basePath) {
-        this.basePath = basePath;
+    public ApiClient setRegion(String region) {
+        this.region = region.toLowerCase();
         return this;
     }
 
@@ -1126,8 +1126,15 @@ public class ApiClient {
      * @return The full URL
      */
     public String buildUrl(String path, List<Pair> queryParams) {
+        final Map<String, String> regionHosts = new HashMap<String, String>();
+        regionHosts.put("us", "https://api.onfido.com/v2".replace("api.onfido", "api.us.onfido"));
+        if (this.region != null && !regionHosts.containsKey(this.region)) {
+            throw new IllegalArgumentException("The region \"" + this.region + "\" is not currently supported");
+        }
+        final String host = this.region == null ? "https://api.onfido.com/v2" : regionHosts.get(this.region);
+
         final StringBuilder url = new StringBuilder();
-        url.append(basePath).append(path);
+        url.append(host).append(path);
 
         if (queryParams != null && !queryParams.isEmpty()) {
             // support (constant) query string in `path`, e.g. "/posts?draft=1"
