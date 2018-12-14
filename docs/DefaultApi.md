@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**listReportTypeGroups**](DefaultApi.md#listReportTypeGroups) | **GET** /report_type_groups | Retrieve all report type groups
 [**listReports**](DefaultApi.md#listReports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
 [**listWebhooks**](DefaultApi.md#listWebhooks) | **GET** /webhooks | List webhooks
+[**restoreApplicant**](DefaultApi.md#restoreApplicant) | **POST** /applicants/{applicant_id}/restore | Restore Applicant
 [**resumeCheck**](DefaultApi.md#resumeCheck) | **POST** /checks/{check_id}/resume | Resume a Check
 [**resumeReport**](DefaultApi.md#resumeReport) | **POST** /checks/{check_id}/reports/{report_id}/resume | This endpoint is for resuming individual paused reports.
 [**updateApplicant**](DefaultApi.md#updateApplicant) | **PUT** /applicants/{applicant_id} | Update Applicant
@@ -692,7 +693,7 @@ Name | Type | Description  | Notes
 
 <a name="listApplicants"></a>
 # **listApplicants**
-> ApplicantsList listApplicants(page, perPage)
+> ApplicantsList listApplicants(page, perPage, includeDeleted)
 
 List Applicants
 
@@ -713,10 +714,11 @@ Token.setApiKey("token=" + "YOUR API KEY");
 Token.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String page = "page_example"; // String | The page to return. Defaults to the first page if omitted. The first page is `page=1`
-String perPage = "perPage_example"; // String | The number of objects per page. Defaults to 20 if omitted.
+Integer page = 56; // Integer | The page to return. Defaults to the first page if omitted. The first page is `page=1`
+Integer perPage = 56; // Integer | The number of objects per page. Defaults to 20 if omitted.
+Boolean includeDeleted = true; // Boolean | Whether to also include applicants scheduled for deletion. Defaults to false if omitted.
 try {
-    ApplicantsList result = apiInstance.listApplicants(page, perPage);
+    ApplicantsList result = apiInstance.listApplicants(page, perPage, includeDeleted);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listApplicants");
@@ -728,8 +730,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **String**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional]
- **perPage** | **String**| The number of objects per page. Defaults to 20 if omitted. | [optional]
+ **page** | **Integer**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional]
+ **perPage** | **Integer**| The number of objects per page. Defaults to 20 if omitted. | [optional]
+ **includeDeleted** | **Boolean**| Whether to also include applicants scheduled for deletion. Defaults to false if omitted. | [optional]
 
 ### Return type
 
@@ -759,8 +762,8 @@ Token.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
-String page = "page_example"; // String | The page to return. Defaults to the first page if omitted. The first page is `page=1`
-String perPage = "perPage_example"; // String | The number of objects per page. Defaults to 20 if omitted.
+Integer page = 56; // Integer | The page to return. Defaults to the first page if omitted. The first page is `page=1`
+Integer perPage = 56; // Integer | The number of objects per page. Defaults to 20 if omitted.
 try {
     ChecksList result = apiInstance.listChecks(applicantId, page, perPage);
     System.out.println(result);
@@ -775,8 +778,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicantId** | **String**|  |
- **page** | **String**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional]
- **perPage** | **String**| The number of objects per page. Defaults to 20 if omitted. | [optional]
+ **page** | **Integer**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional]
+ **perPage** | **Integer**| The number of objects per page. Defaults to 20 if omitted. | [optional]
 
 ### Return type
 
@@ -990,6 +993,48 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**WebhooksList**](WebhooksList.md)
+
+<a name="restoreApplicant"></a>
+# **restoreApplicant**
+> restoreApplicant(applicantId)
+
+Restore Applicant
+
+### Example
+```java
+// Import classes:
+//import com.onfido.ApiClient;
+//import com.onfido.ApiException;
+//import com.onfido.Configuration;
+//import com.onfido.auth.*;
+//import com.onfido.api.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: Token
+ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+Token.setApiKey("token=" + "YOUR API KEY");
+Token.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String applicantId = "applicantId_example"; // String | 
+try {
+    apiInstance.restoreApplicant(applicantId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#restoreApplicant");
+    System.err.println(e.getResponseBody());
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicantId** | **String**|  |
+
+### Return type
+
+null (empty response body)
 
 <a name="resumeCheck"></a>
 # **resumeCheck**

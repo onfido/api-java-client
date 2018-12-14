@@ -35,7 +35,7 @@ import java.time.LocalDate;
 /**
  * Address
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-08T15:56:57.777Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-14T11:19:36.236Z")
 public class Address   {
   @SerializedName("flat_number")
   private String flatNumber = null;

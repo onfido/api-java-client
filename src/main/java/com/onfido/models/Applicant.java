@@ -40,13 +40,16 @@ import java.util.List;
 /**
  * Applicant
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-08T15:56:57.777Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-14T11:19:36.236Z")
 public class Applicant   {
   @SerializedName("id")
   private String id = null;
 
   @SerializedName("created_at")
   private OffsetDateTime createdAt = null;
+
+  @SerializedName("delete_at")
+  private OffsetDateTime deleteAt = null;
 
   @SerializedName("href")
   private String href = null;
@@ -130,6 +133,24 @@ public class Applicant   {
 
   public void setCreatedAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
+  }
+
+  public Applicant deleteAt(OffsetDateTime deleteAt) {
+    this.deleteAt = deleteAt;
+    return this;
+  }
+
+   /**
+   * The date and time when this applicant is scheduled to be deleted, or null if the applicant is not scheduled to be deleted
+   * @return deleteAt
+  **/
+  @ApiModelProperty(example = "null", value = "The date and time when this applicant is scheduled to be deleted, or null if the applicant is not scheduled to be deleted")
+  public OffsetDateTime getDeleteAt() {
+    return deleteAt;
+  }
+
+  public void setDeleteAt(OffsetDateTime deleteAt) {
+    this.deleteAt = deleteAt;
   }
 
   public Applicant href(String href) {
@@ -496,6 +517,7 @@ public class Applicant   {
     Applicant applicant = (Applicant) o;
     return Objects.equals(this.id, applicant.id) &&
         Objects.equals(this.createdAt, applicant.createdAt) &&
+        Objects.equals(this.deleteAt, applicant.deleteAt) &&
         Objects.equals(this.href, applicant.href) &&
         Objects.equals(this.title, applicant.title) &&
         Objects.equals(this.firstName, applicant.firstName) &&
@@ -519,7 +541,7 @@ public class Applicant   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, href, title, firstName, middleName, lastName, email, gender, dob, telephone, mobile, country, sandbox, nationality, mothersMaidenName, countryOfBirth, townOfBirth, previousLastName, addresses, idNumbers);
+    return Objects.hash(id, createdAt, deleteAt, href, title, firstName, middleName, lastName, email, gender, dob, telephone, mobile, country, sandbox, nationality, mothersMaidenName, countryOfBirth, townOfBirth, previousLastName, addresses, idNumbers);
   }
 
   @Override
@@ -529,6 +551,7 @@ public class Applicant   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    deleteAt: ").append(toIndentedString(deleteAt)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");

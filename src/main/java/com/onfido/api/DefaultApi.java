@@ -1717,7 +1717,7 @@ public class DefaultApi {
         return call;
     }
     /* Build call for listApplicants */
-    private com.squareup.okhttp.Call listApplicantsCall(String page, String perPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listApplicantsCall(Integer page, Integer perPage, Boolean includeDeleted, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
 
@@ -1729,6 +1729,8 @@ public class DefaultApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
         if (perPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "per_page", perPage));
+        if (includeDeleted != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "include_deleted", includeDeleted));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1767,11 +1769,12 @@ public class DefaultApi {
      * 
      * @param page The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; (optional)
      * @param perPage The number of objects per page. Defaults to 20 if omitted. (optional)
+     * @param includeDeleted Whether to also include applicants scheduled for deletion. Defaults to false if omitted. (optional)
      * @return ApplicantsList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApplicantsList listApplicants(String page, String perPage) throws ApiException {
-        ApiResponse<ApplicantsList> resp = listApplicantsWithHttpInfo(page, perPage);
+    public ApplicantsList listApplicants(Integer page, Integer perPage, Boolean includeDeleted) throws ApiException {
+        ApiResponse<ApplicantsList> resp = listApplicantsWithHttpInfo(page, perPage, includeDeleted);
         return resp.getData();
     }
 
@@ -1780,11 +1783,12 @@ public class DefaultApi {
      * 
      * @param page The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; (optional)
      * @param perPage The number of objects per page. Defaults to 20 if omitted. (optional)
+     * @param includeDeleted Whether to also include applicants scheduled for deletion. Defaults to false if omitted. (optional)
      * @return ApiResponse&lt;ApplicantsList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApplicantsList> listApplicantsWithHttpInfo(String page, String perPage) throws ApiException {
-        com.squareup.okhttp.Call call = listApplicantsCall(page, perPage, null, null);
+    public ApiResponse<ApplicantsList> listApplicantsWithHttpInfo(Integer page, Integer perPage, Boolean includeDeleted) throws ApiException {
+        com.squareup.okhttp.Call call = listApplicantsCall(page, perPage, includeDeleted, null, null);
         Type localVarReturnType = new TypeToken<ApplicantsList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1794,11 +1798,12 @@ public class DefaultApi {
      * 
      * @param page The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; (optional)
      * @param perPage The number of objects per page. Defaults to 20 if omitted. (optional)
+     * @param includeDeleted Whether to also include applicants scheduled for deletion. Defaults to false if omitted. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listApplicantsAsync(String page, String perPage, final ApiCallback<ApplicantsList> callback) throws ApiException {
+    public com.squareup.okhttp.Call listApplicantsAsync(Integer page, Integer perPage, Boolean includeDeleted, final ApiCallback<ApplicantsList> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1819,13 +1824,13 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = listApplicantsCall(page, perPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = listApplicantsCall(page, perPage, includeDeleted, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApplicantsList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for listChecks */
-    private com.squareup.okhttp.Call listChecksCall(String applicantId, String page, String perPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call listChecksCall(String applicantId, Integer page, Integer perPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // verify the required parameter 'applicantId' is set
@@ -1885,7 +1890,7 @@ public class DefaultApi {
      * @return ChecksList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ChecksList listChecks(String applicantId, String page, String perPage) throws ApiException {
+    public ChecksList listChecks(String applicantId, Integer page, Integer perPage) throws ApiException {
         ApiResponse<ChecksList> resp = listChecksWithHttpInfo(applicantId, page, perPage);
         return resp.getData();
     }
@@ -1899,7 +1904,7 @@ public class DefaultApi {
      * @return ApiResponse&lt;ChecksList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ChecksList> listChecksWithHttpInfo(String applicantId, String page, String perPage) throws ApiException {
+    public ApiResponse<ChecksList> listChecksWithHttpInfo(String applicantId, Integer page, Integer perPage) throws ApiException {
         com.squareup.okhttp.Call call = listChecksCall(applicantId, page, perPage, null, null);
         Type localVarReturnType = new TypeToken<ChecksList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1915,7 +1920,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listChecksAsync(String applicantId, String page, String perPage, final ApiCallback<ChecksList> callback) throws ApiException {
+    public com.squareup.okhttp.Call listChecksAsync(String applicantId, Integer page, Integer perPage, final ApiCallback<ChecksList> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2457,6 +2462,109 @@ public class DefaultApi {
         com.squareup.okhttp.Call call = listWebhooksCall(progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<WebhooksList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /* Build call for restoreApplicant */
+    private com.squareup.okhttp.Call restoreApplicantCall(String applicantId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'applicantId' is set
+        if (applicantId == null) {
+            throw new ApiException("Missing the required parameter 'applicantId' when calling restoreApplicant(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/applicants/{applicant_id}/restore".replaceAll("\\{format\\}","json")
+        .replaceAll("\\{" + "applicant_id" + "\\}", apiClient.escapeString(applicantId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "Token" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Restore Applicant
+     * 
+     * @param applicantId  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void restoreApplicant(String applicantId) throws ApiException {
+        restoreApplicantWithHttpInfo(applicantId);
+    }
+
+    /**
+     * Restore Applicant
+     * 
+     * @param applicantId  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> restoreApplicantWithHttpInfo(String applicantId) throws ApiException {
+        com.squareup.okhttp.Call call = restoreApplicantCall(applicantId, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     * Restore Applicant (asynchronously)
+     * 
+     * @param applicantId  (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call restoreApplicantAsync(String applicantId, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = restoreApplicantCall(applicantId, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
         return call;
     }
     /* Build call for resumeCheck */

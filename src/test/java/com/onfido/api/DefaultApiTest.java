@@ -315,9 +315,10 @@ public class DefaultApiTest {
      */
     @Test
     public void listApplicantsTest() throws ApiException {
-        String page = null;
-        String perPage = null;
-        // ApplicantsList response = api.listApplicants(page, perPage);
+        Integer page = null;
+        Integer perPage = null;
+        Boolean includeDeleted = null;
+        // ApplicantsList response = api.listApplicants(page, perPage, includeDeleted);
 
         // TODO: test validations
     }
@@ -333,8 +334,8 @@ public class DefaultApiTest {
     @Test
     public void listChecksTest() throws ApiException {
         String applicantId = null;
-        String page = null;
-        String perPage = null;
+        Integer page = null;
+        Integer perPage = null;
         // ChecksList response = api.listChecks(applicantId, page, perPage);
 
         // TODO: test validations
@@ -414,6 +415,22 @@ public class DefaultApiTest {
     @Test
     public void listWebhooksTest() throws ApiException {
         // WebhooksList response = api.listWebhooks();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Restore Applicant
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void restoreApplicantTest() throws ApiException {
+        String applicantId = null;
+        // api.restoreApplicant(applicantId);
 
         // TODO: test validations
     }

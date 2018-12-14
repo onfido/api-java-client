@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.onfido</groupId>
     <artifactId>onfido-java</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.onfido:onfido-java:1.4.0"
+compile "com.onfido:onfido-java:1.5.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/onfido-java-1.4.0.jar
+* target/onfido-java-1.5.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**listReportTypeGroups**](docs/DefaultApi.md#listReportTypeGroups) | **GET** /report_type_groups | Retrieve all report type groups
 *DefaultApi* | [**listReports**](docs/DefaultApi.md#listReports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
 *DefaultApi* | [**listWebhooks**](docs/DefaultApi.md#listWebhooks) | **GET** /webhooks | List webhooks
+*DefaultApi* | [**restoreApplicant**](docs/DefaultApi.md#restoreApplicant) | **POST** /applicants/{applicant_id}/restore | Restore Applicant
 *DefaultApi* | [**resumeCheck**](docs/DefaultApi.md#resumeCheck) | **POST** /checks/{check_id}/resume | Resume a Check
 *DefaultApi* | [**resumeReport**](docs/DefaultApi.md#resumeReport) | **POST** /checks/{check_id}/reports/{report_id}/resume | This endpoint is for resuming individual paused reports.
 *DefaultApi* | [**updateApplicant**](docs/DefaultApi.md#updateApplicant) | **PUT** /applicants/{applicant_id} | Update Applicant

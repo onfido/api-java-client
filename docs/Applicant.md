@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The unique identifier for the applicant |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when this applicant was created |  [optional]
+**deleteAt** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when this applicant is scheduled to be deleted, or null if the applicant is not scheduled to be deleted |  [optional]
 **href** | **String** | The uri of this resource |  [optional]
 **title** | **String** | The applicant’s title |  [optional]
 **firstName** | **String** | The applicant’s first name | 

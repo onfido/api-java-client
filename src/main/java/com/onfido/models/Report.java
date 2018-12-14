@@ -30,12 +30,14 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * Report
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-08T15:56:57.777Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-14T11:19:36.236Z")
 public class Report   {
   @SerializedName("id")
   private String id = null;
@@ -69,6 +71,9 @@ public class Report   {
 
   @SerializedName("properties")
   private Object properties = null;
+
+  @SerializedName("documents")
+  private List<Object> documents = new ArrayList<Object>();
 
    /**
    * The unique identifier for the report.
@@ -259,6 +264,29 @@ public class Report   {
     this.properties = properties;
   }
 
+  public Report documents(List<Object> documents) {
+    this.documents = documents;
+    return this;
+  }
+
+  public Report addDocumentsItem(Object documentsItem) {
+    this.documents.add(documentsItem);
+    return this;
+  }
+
+   /**
+   * Array of objects with document ids that were used in the Onfido engine. [ONLY USED IN A DOCUMENT CHECK]
+   * @return documents
+  **/
+  @ApiModelProperty(example = "null", value = "Array of objects with document ids that were used in the Onfido engine. [ONLY USED IN A DOCUMENT CHECK]")
+  public List<Object> getDocuments() {
+    return documents;
+  }
+
+  public void setDocuments(List<Object> documents) {
+    this.documents = documents;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -279,12 +307,13 @@ public class Report   {
         Objects.equals(this.variant, report.variant) &&
         Objects.equals(this.options, report.options) &&
         Objects.equals(this.breakdown, report.breakdown) &&
-        Objects.equals(this.properties, report.properties);
+        Objects.equals(this.properties, report.properties) &&
+        Objects.equals(this.documents, report.documents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, href, name, status, result, subResult, variant, options, breakdown, properties);
+    return Objects.hash(id, createdAt, href, name, status, result, subResult, variant, options, breakdown, properties, documents);
   }
 
   @Override
@@ -303,6 +332,7 @@ public class Report   {
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    breakdown: ").append(toIndentedString(breakdown)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    documents: ").append(toIndentedString(documents)).append("\n");
     sb.append("}");
     return sb.toString();
   }
