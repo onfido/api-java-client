@@ -27,7 +27,7 @@ package com.onfido.models;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import com.onfido.models.Applicant;
+import com.onfido.models.LiveVideo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -35,34 +35,34 @@ import java.util.List;
 
 
 /**
- * ApplicantsList
+ * LiveVideosList
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-05T13:51:13.392Z")
-public class ApplicantsList   {
-  @SerializedName("applicants")
-  private List<Applicant> applicants = new ArrayList<Applicant>();
+public class LiveVideosList   {
+  @SerializedName("live_videos")
+  private List<LiveVideo> liveVideos = new ArrayList<LiveVideo>();
 
-  public ApplicantsList applicants(List<Applicant> applicants) {
-    this.applicants = applicants;
+  public LiveVideosList liveVideos(List<LiveVideo> liveVideos) {
+    this.liveVideos = liveVideos;
     return this;
   }
 
-  public ApplicantsList addApplicantsItem(Applicant applicantsItem) {
-    this.applicants.add(applicantsItem);
+  public LiveVideosList addLiveVideosItem(LiveVideo liveVideosItem) {
+    this.liveVideos.add(liveVideosItem);
     return this;
   }
 
    /**
-   * Get applicants
-   * @return applicants
+   * Get liveVideos
+   * @return liveVideos
   **/
   @ApiModelProperty(example = "null", value = "")
-  public List<Applicant> getApplicants() {
-    return applicants;
+  public List<LiveVideo> getLiveVideos() {
+    return liveVideos;
   }
 
-  public void setApplicants(List<Applicant> applicants) {
-    this.applicants = applicants;
+  public void setLiveVideos(List<LiveVideo> liveVideos) {
+    this.liveVideos = liveVideos;
   }
 
 
@@ -74,21 +74,21 @@ public class ApplicantsList   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApplicantsList applicantsList = (ApplicantsList) o;
-    return Objects.equals(this.applicants, applicantsList.applicants);
+    LiveVideosList liveVideosList = (LiveVideosList) o;
+    return Objects.equals(this.liveVideos, liveVideosList.liveVideos);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicants);
+    return Objects.hash(liveVideos);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApplicantsList {\n");
+    sb.append("class LiveVideosList {\n");
     
-    sb.append("    applicants: ").append(toIndentedString(applicants)).append("\n");
+    sb.append("    liveVideos: ").append(toIndentedString(liveVideos)).append("\n");
     sb.append("}");
     return sb.toString();
   }

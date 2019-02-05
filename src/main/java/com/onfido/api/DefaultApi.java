@@ -47,12 +47,14 @@ import java.io.File;
 import com.onfido.models.GenericAddressesList;
 import com.onfido.models.Document;
 import com.onfido.models.LivePhoto;
+import com.onfido.models.LiveVideo;
 import com.onfido.models.Report;
 import com.onfido.models.ReportTypeGroup;
 import com.onfido.models.ApplicantsList;
 import com.onfido.models.ChecksList;
 import com.onfido.models.DocumentsList;
 import com.onfido.models.LivePhotosList;
+import com.onfido.models.LiveVideosList;
 import com.onfido.models.ReportTypeGroupsList;
 import com.onfido.models.ReportsList;
 import com.onfido.models.WebhooksList;
@@ -1386,6 +1388,113 @@ public class DefaultApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+    /* Build call for findLiveVideo */
+    private com.squareup.okhttp.Call findLiveVideoCall(String liveVideoId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'liveVideoId' is set
+        if (liveVideoId == null) {
+            throw new ApiException("Missing the required parameter 'liveVideoId' when calling findLiveVideo(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/live_videos/{live_video_id}".replaceAll("\\{format\\}","json")
+        .replaceAll("\\{" + "live_video_id" + "\\}", apiClient.escapeString(liveVideoId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "Token" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Retrieve live video
+     * 
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @return LiveVideo
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public LiveVideo findLiveVideo(String liveVideoId) throws ApiException {
+        ApiResponse<LiveVideo> resp = findLiveVideoWithHttpInfo(liveVideoId);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieve live video
+     * 
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @return ApiResponse&lt;LiveVideo&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<LiveVideo> findLiveVideoWithHttpInfo(String liveVideoId) throws ApiException {
+        com.squareup.okhttp.Call call = findLiveVideoCall(liveVideoId, null, null);
+        Type localVarReturnType = new TypeToken<LiveVideo>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Retrieve live video (asynchronously)
+     * 
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call findLiveVideoAsync(String liveVideoId, final ApiCallback<LiveVideo> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = findLiveVideoCall(liveVideoId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<LiveVideo>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
     /* Build call for findReport */
     private com.squareup.okhttp.Call findReportCall(String checkId, String reportId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
@@ -2105,7 +2214,7 @@ public class DefaultApi {
     /**
      * List live photos
      * 
-     * @param applicantId The id of the applicant the live photos belongs to. (required)
+     * @param applicantId The id of the applicant the live photos belong to. (required)
      * @return LivePhotosList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2117,7 +2226,7 @@ public class DefaultApi {
     /**
      * List live photos
      * 
-     * @param applicantId The id of the applicant the live photos belongs to. (required)
+     * @param applicantId The id of the applicant the live photos belong to. (required)
      * @return ApiResponse&lt;LivePhotosList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2130,7 +2239,7 @@ public class DefaultApi {
     /**
      * List live photos (asynchronously)
      * 
-     * @param applicantId The id of the applicant the live photos belongs to. (required)
+     * @param applicantId The id of the applicant the live photos belong to. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2158,6 +2267,114 @@ public class DefaultApi {
 
         com.squareup.okhttp.Call call = listLivePhotosCall(applicantId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<LivePhotosList>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /* Build call for listLiveVideos */
+    private com.squareup.okhttp.Call listLiveVideosCall(String applicantId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'applicantId' is set
+        if (applicantId == null) {
+            throw new ApiException("Missing the required parameter 'applicantId' when calling listLiveVideos(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/live_videos".replaceAll("\\{format\\}","json");
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (applicantId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "applicant_id", applicantId));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "Token" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * List live videos
+     * 
+     * @param applicantId The id of the applicant the live videos belong to. (required)
+     * @return LiveVideosList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public LiveVideosList listLiveVideos(String applicantId) throws ApiException {
+        ApiResponse<LiveVideosList> resp = listLiveVideosWithHttpInfo(applicantId);
+        return resp.getData();
+    }
+
+    /**
+     * List live videos
+     * 
+     * @param applicantId The id of the applicant the live videos belong to. (required)
+     * @return ApiResponse&lt;LiveVideosList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<LiveVideosList> listLiveVideosWithHttpInfo(String applicantId) throws ApiException {
+        com.squareup.okhttp.Call call = listLiveVideosCall(applicantId, null, null);
+        Type localVarReturnType = new TypeToken<LiveVideosList>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * List live videos (asynchronously)
+     * 
+     * @param applicantId The id of the applicant the live videos belong to. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listLiveVideosAsync(String applicantId, final ApiCallback<LiveVideosList> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listLiveVideosCall(applicantId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<LiveVideosList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

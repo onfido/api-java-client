@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.onfido</groupId>
     <artifactId>onfido-java</artifactId>
-    <version>1.5.0</version>
+    <version>1.6.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.onfido:onfido-java:1.5.0"
+compile "com.onfido:onfido-java:1.6.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/onfido-java-1.5.0.jar
+* target/onfido-java-1.6.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -142,6 +142,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**findCheck**](docs/DefaultApi.md#findCheck) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
 *DefaultApi* | [**findDocument**](docs/DefaultApi.md#findDocument) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 *DefaultApi* | [**findLivePhoto**](docs/DefaultApi.md#findLivePhoto) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
+*DefaultApi* | [**findLiveVideo**](docs/DefaultApi.md#findLiveVideo) | **GET** /live_videos/{live_video_id} | Retrieve live video
 *DefaultApi* | [**findReport**](docs/DefaultApi.md#findReport) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 *DefaultApi* | [**findReportTypeGroup**](docs/DefaultApi.md#findReportTypeGroup) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
 *DefaultApi* | [**findWebhook**](docs/DefaultApi.md#findWebhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
@@ -149,6 +150,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**listChecks**](docs/DefaultApi.md#listChecks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 *DefaultApi* | [**listDocuments**](docs/DefaultApi.md#listDocuments) | **GET** /applicants/{applicant_id}/documents | List documents
 *DefaultApi* | [**listLivePhotos**](docs/DefaultApi.md#listLivePhotos) | **GET** /live_photos | List live photos
+*DefaultApi* | [**listLiveVideos**](docs/DefaultApi.md#listLiveVideos) | **GET** /live_videos | List live videos
 *DefaultApi* | [**listReportTypeGroups**](docs/DefaultApi.md#listReportTypeGroups) | **GET** /report_type_groups | Retrieve all report type groups
 *DefaultApi* | [**listReports**](docs/DefaultApi.md#listReports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
 *DefaultApi* | [**listWebhooks**](docs/DefaultApi.md#listWebhooks) | **GET** /webhooks | List webhooks
@@ -176,6 +178,8 @@ Class | Method | HTTP request | Description
  - [IdNumber](docs/IdNumber.md)
  - [LivePhoto](docs/LivePhoto.md)
  - [LivePhotosList](docs/LivePhotosList.md)
+ - [LiveVideo](docs/LiveVideo.md)
+ - [LiveVideosList](docs/LiveVideosList.md)
  - [Report](docs/Report.md)
  - [ReportType](docs/ReportType.md)
  - [ReportTypeGroup](docs/ReportTypeGroup.md)

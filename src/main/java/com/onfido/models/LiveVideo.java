@@ -33,10 +33,10 @@ import java.time.OffsetDateTime;
 
 
 /**
- * LivePhoto
+ * LiveVideo
  */
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-05T13:51:13.392Z")
-public class LivePhoto   {
+public class LiveVideo   {
   @SerializedName("id")
   private String id = null;
 
@@ -58,16 +58,16 @@ public class LivePhoto   {
   @SerializedName("file_type")
   private String fileType = null;
 
-  public LivePhoto id(String id) {
+  public LiveVideo id(String id) {
     this.id = id;
     return this;
   }
 
    /**
-   * The unique identifier for the document.
+   * The unique identifier for the video.
    * @return id
   **/
-  @ApiModelProperty(example = "null", value = "The unique identifier for the document.")
+  @ApiModelProperty(example = "null", value = "The unique identifier for the video.")
   public String getId() {
     return id;
   }
@@ -76,16 +76,16 @@ public class LivePhoto   {
     this.id = id;
   }
 
-  public LivePhoto createdAt(OffsetDateTime createdAt) {
+  public LiveVideo createdAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
   }
 
    /**
-   * The date and time at which the document was uploaded.
+   * The date and time at which the video was uploaded.
    * @return createdAt
   **/
-  @ApiModelProperty(example = "null", value = "The date and time at which the document was uploaded.")
+  @ApiModelProperty(example = "null", value = "The date and time at which the video was uploaded.")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -94,7 +94,7 @@ public class LivePhoto   {
     this.createdAt = createdAt;
   }
 
-  public LivePhoto href(String href) {
+  public LiveVideo href(String href) {
     this.href = href;
     return this;
   }
@@ -112,16 +112,16 @@ public class LivePhoto   {
     this.href = href;
   }
 
-  public LivePhoto downloadHref(String downloadHref) {
+  public LiveVideo downloadHref(String downloadHref) {
     this.downloadHref = downloadHref;
     return this;
   }
 
    /**
-   * The uri that can be used to download the document.
+   * The uri that can be used to download the video.
    * @return downloadHref
   **/
-  @ApiModelProperty(example = "null", value = "The uri that can be used to download the document.")
+  @ApiModelProperty(example = "null", value = "The uri that can be used to download the video.")
   public String getDownloadHref() {
     return downloadHref;
   }
@@ -130,7 +130,7 @@ public class LivePhoto   {
     this.downloadHref = downloadHref;
   }
 
-  public LivePhoto fileName(String fileName) {
+  public LiveVideo fileName(String fileName) {
     this.fileName = fileName;
     return this;
   }
@@ -148,7 +148,7 @@ public class LivePhoto   {
     this.fileName = fileName;
   }
 
-  public LivePhoto fileSize(Integer fileSize) {
+  public LiveVideo fileSize(Integer fileSize) {
     this.fileSize = fileSize;
     return this;
   }
@@ -166,7 +166,7 @@ public class LivePhoto   {
     this.fileSize = fileSize;
   }
 
-  public LivePhoto fileType(String fileType) {
+  public LiveVideo fileType(String fileType) {
     this.fileType = fileType;
     return this;
   }
@@ -193,14 +193,14 @@ public class LivePhoto   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LivePhoto livePhoto = (LivePhoto) o;
-    return Objects.equals(this.id, livePhoto.id) &&
-        Objects.equals(this.createdAt, livePhoto.createdAt) &&
-        Objects.equals(this.href, livePhoto.href) &&
-        Objects.equals(this.downloadHref, livePhoto.downloadHref) &&
-        Objects.equals(this.fileName, livePhoto.fileName) &&
-        Objects.equals(this.fileSize, livePhoto.fileSize) &&
-        Objects.equals(this.fileType, livePhoto.fileType);
+    LiveVideo liveVideo = (LiveVideo) o;
+    return Objects.equals(this.id, liveVideo.id) &&
+        Objects.equals(this.createdAt, liveVideo.createdAt) &&
+        Objects.equals(this.href, liveVideo.href) &&
+        Objects.equals(this.downloadHref, liveVideo.downloadHref) &&
+        Objects.equals(this.fileName, liveVideo.fileName) &&
+        Objects.equals(this.fileSize, liveVideo.fileSize) &&
+        Objects.equals(this.fileType, liveVideo.fileType);
   }
 
   @Override
@@ -211,7 +211,7 @@ public class LivePhoto   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LivePhoto {\n");
+    sb.append("class LiveVideo {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
