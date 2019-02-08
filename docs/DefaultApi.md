@@ -16,7 +16,6 @@ Method | HTTP request | Description
 [**findCheck**](DefaultApi.md#findCheck) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
 [**findDocument**](DefaultApi.md#findDocument) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 [**findLivePhoto**](DefaultApi.md#findLivePhoto) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
-[**findLiveVideo**](DefaultApi.md#findLiveVideo) | **GET** /live_videos/{live_video_id} | Retrieve live video
 [**findReport**](DefaultApi.md#findReport) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 [**findReportTypeGroup**](DefaultApi.md#findReportTypeGroup) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
 [**findWebhook**](DefaultApi.md#findWebhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
@@ -24,7 +23,6 @@ Method | HTTP request | Description
 [**listChecks**](DefaultApi.md#listChecks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 [**listDocuments**](DefaultApi.md#listDocuments) | **GET** /applicants/{applicant_id}/documents | List documents
 [**listLivePhotos**](DefaultApi.md#listLivePhotos) | **GET** /live_photos | List live photos
-[**listLiveVideos**](DefaultApi.md#listLiveVideos) | **GET** /live_videos | List live videos
 [**listReportTypeGroups**](DefaultApi.md#listReportTypeGroups) | **GET** /report_type_groups | Retrieve all report type groups
 [**listReports**](DefaultApi.md#listReports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
 [**listWebhooks**](DefaultApi.md#listWebhooks) | **GET** /webhooks | List webhooks
@@ -54,9 +52,9 @@ This endpoint is for cancelling individual paused reports.
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String checkId = "checkId_example"; // String | 
@@ -65,7 +63,7 @@ try {
     apiInstance.cancelReport(checkId, reportId);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#cancelReport");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -80,9 +78,18 @@ Name | Type | Description  | Notes
 
 null (empty response body)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="createApplicant"></a>
 # **createApplicant**
-> Applicant createApplicant(data)
+> Applicant createApplicant(applicant)
 
 Create Applicant
 
@@ -98,18 +105,18 @@ Create Applicant
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-Applicant data = new Applicant(); // Applicant | 
+Applicant applicant = new Applicant(); // Applicant | 
 try {
-    Applicant result = apiInstance.createApplicant(data);
+    Applicant result = apiInstance.createApplicant(applicant);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#createApplicant");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -117,15 +124,24 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**Applicant**](Applicant.md)|  | [optional]
+ **applicant** | [**Applicant**](Applicant.md)|  |
 
 ### Return type
 
 [**Applicant**](Applicant.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="createCheck"></a>
 # **createCheck**
-> Check createCheck(applicantId, data)
+> Check createCheck(applicantId, check)
 
 Create a check
 
@@ -141,19 +157,19 @@ Create a check
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
-CheckCreationRequest data = new CheckCreationRequest(); // CheckCreationRequest | 
+Check check = new Check(); // Check | 
 try {
-    Check result = apiInstance.createCheck(applicantId, data);
+    Check result = apiInstance.createCheck(applicantId, check);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#createCheck");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -162,15 +178,24 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicantId** | **String**|  |
- **data** | [**CheckCreationRequest**](CheckCreationRequest.md)|  | [optional]
+ **check** | [**Check**](Check.md)|  |
 
 ### Return type
 
 [**Check**](Check.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="createWebhook"></a>
 # **createWebhook**
-> Webhook createWebhook(data)
+> Webhook createWebhook(webhook)
 
 Create a webhook
 
@@ -186,18 +211,18 @@ Create a webhook
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-Webhook data = new Webhook(); // Webhook | 
+Webhook webhook = new Webhook(); // Webhook | 
 try {
-    Webhook result = apiInstance.createWebhook(data);
+    Webhook result = apiInstance.createWebhook(webhook);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#createWebhook");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -205,11 +230,20 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**Webhook**](Webhook.md)|  | [optional]
+ **webhook** | [**Webhook**](Webhook.md)|  |
 
 ### Return type
 
 [**Webhook**](Webhook.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="destroyApplicant"></a>
 # **destroyApplicant**
@@ -229,9 +263,9 @@ Delete Applicant
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
@@ -239,7 +273,7 @@ try {
     apiInstance.destroyApplicant(applicantId);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#destroyApplicant");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -252,6 +286,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 null (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="downloadDocument"></a>
 # **downloadDocument**
@@ -271,9 +314,9 @@ Download a documents raw data
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
@@ -283,7 +326,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#downloadDocument");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -297,6 +340,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**File**](File.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*, application/json
 
 <a name="downloadLivePhoto"></a>
 # **downloadLivePhoto**
@@ -318,9 +370,9 @@ Live photos are downloaded using this endpoint.
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String livePhotoId = "livePhotoId_example"; // String | The live photo’s unique identifier.
@@ -329,7 +381,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#downloadLivePhoto");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -342,6 +394,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**File**](File.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*, application/json
 
 <a name="findAddresses"></a>
 # **findAddresses**
@@ -361,9 +422,9 @@ Search for addresses by postcode
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String postcode = "postcode_example"; // String | 
@@ -372,7 +433,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findAddresses");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -385,6 +446,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GenericAddressesList**](GenericAddressesList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="findApplicant"></a>
 # **findApplicant**
@@ -404,9 +474,9 @@ Retrieve Applicant
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
@@ -415,7 +485,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findApplicant");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -429,9 +499,18 @@ Name | Type | Description  | Notes
 
 [**Applicant**](Applicant.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="findCheck"></a>
 # **findCheck**
-> Check findCheck(applicantId, checkId)
+> CheckWithReportIds findCheck(applicantId, checkId)
 
 Retrieve a Check
 
@@ -447,19 +526,19 @@ Retrieve a Check
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
 String checkId = "checkId_example"; // String | 
 try {
-    Check result = apiInstance.findCheck(applicantId, checkId);
+    CheckWithReportIds result = apiInstance.findCheck(applicantId, checkId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findCheck");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -472,7 +551,16 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Check**](Check.md)
+[**CheckWithReportIds**](CheckWithReportIds.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="findDocument"></a>
 # **findDocument**
@@ -492,9 +580,9 @@ A single document can be retrieved by calling this endpoint with the document’
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
@@ -504,7 +592,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findDocument");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -518,6 +606,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Document**](Document.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="findLivePhoto"></a>
 # **findLivePhoto**
@@ -537,9 +634,9 @@ Retrieve live photo
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String livePhotoId = "livePhotoId_example"; // String | The live photo’s unique identifier.
@@ -548,7 +645,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findLivePhoto");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -562,48 +659,14 @@ Name | Type | Description  | Notes
 
 [**LivePhoto**](LivePhoto.md)
 
-<a name="findLiveVideo"></a>
-# **findLiveVideo**
-> LiveVideo findLiveVideo(liveVideoId)
+### Authorization
 
-Retrieve live video
+[Token](../README.md#Token)
 
-### Example
-```java
-// Import classes:
-//import com.onfido.ApiClient;
-//import com.onfido.ApiException;
-//import com.onfido.Configuration;
-//import com.onfido.auth.*;
-//import com.onfido.api.DefaultApi;
+### HTTP request headers
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
-
-DefaultApi apiInstance = new DefaultApi();
-String liveVideoId = "liveVideoId_example"; // String | The live video’s unique identifier.
-try {
-    LiveVideo result = apiInstance.findLiveVideo(liveVideoId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#findLiveVideo");
-    System.err.println(e.getResponseBody());
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **liveVideoId** | **String**| The live video’s unique identifier. |
-
-### Return type
-
-[**LiveVideo**](LiveVideo.md)
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="findReport"></a>
 # **findReport**
@@ -623,9 +686,9 @@ A single report can be retrieved using this endpoint with the corresponding uniq
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String checkId = "checkId_example"; // String | 
@@ -635,7 +698,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findReport");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -649,6 +712,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Report**](Report.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="findReportTypeGroup"></a>
 # **findReportTypeGroup**
@@ -668,9 +740,9 @@ Retrieve single report type group object
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String reportTypeGroupId = "reportTypeGroupId_example"; // String | 
@@ -679,7 +751,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findReportTypeGroup");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -692,6 +764,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ReportTypeGroup**](ReportTypeGroup.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="findWebhook"></a>
 # **findWebhook**
@@ -711,9 +792,9 @@ Retrieve a Webhook
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String webhookId = "webhookId_example"; // String | 
@@ -722,7 +803,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findWebhook");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -735,6 +816,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Webhook**](Webhook.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="listApplicants"></a>
 # **listApplicants**
@@ -754,20 +844,20 @@ List Applicants
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-Integer page = 56; // Integer | The page to return. Defaults to the first page if omitted. The first page is `page=1`
-Integer perPage = 56; // Integer | The number of objects per page. Defaults to 20 if omitted.
-Boolean includeDeleted = true; // Boolean | Whether to also include applicants scheduled for deletion. Defaults to false if omitted.
+Integer page = 1; // Integer | The page to return. The first page is `page=1`
+Integer perPage = 20; // Integer | The number of objects per page.
+Boolean includeDeleted = false; // Boolean | Whether to also include applicants scheduled for deletion.
 try {
     ApplicantsList result = apiInstance.listApplicants(page, perPage, includeDeleted);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listApplicants");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -775,13 +865,22 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **Integer**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional]
- **perPage** | **Integer**| The number of objects per page. Defaults to 20 if omitted. | [optional]
- **includeDeleted** | **Boolean**| Whether to also include applicants scheduled for deletion. Defaults to false if omitted. | [optional]
+ **page** | **Integer**| The page to return. The first page is &#x60;page&#x3D;1&#x60; | [optional] [default to 1]
+ **perPage** | **Integer**| The number of objects per page. | [optional] [default to 20]
+ **includeDeleted** | **Boolean**| Whether to also include applicants scheduled for deletion. | [optional] [default to false]
 
 ### Return type
 
 [**ApplicantsList**](ApplicantsList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="listChecks"></a>
 # **listChecks**
@@ -801,20 +900,20 @@ Retrieve Checks
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
-Integer page = 56; // Integer | The page to return. Defaults to the first page if omitted. The first page is `page=1`
-Integer perPage = 56; // Integer | The number of objects per page. Defaults to 20 if omitted.
+Integer page = 1; // Integer | The page to return. The first page is `page=1`.
+Integer perPage = 20; // Integer | The number of objects per page.
 try {
     ChecksList result = apiInstance.listChecks(applicantId, page, perPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listChecks");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -823,12 +922,21 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicantId** | **String**|  |
- **page** | **Integer**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional]
- **perPage** | **Integer**| The number of objects per page. Defaults to 20 if omitted. | [optional]
+ **page** | **Integer**| The page to return. The first page is &#x60;page&#x3D;1&#x60;. | [optional] [default to 1]
+ **perPage** | **Integer**| The number of objects per page. | [optional] [default to 20]
 
 ### Return type
 
 [**ChecksList**](ChecksList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="listDocuments"></a>
 # **listDocuments**
@@ -850,9 +958,9 @@ All documents belonging to an applicant can be listed from this endpoint
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
@@ -861,7 +969,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listDocuments");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -874,6 +982,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DocumentsList**](DocumentsList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="listLivePhotos"></a>
 # **listLivePhotos**
@@ -893,9 +1010,9 @@ List live photos
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | The id of the applicant the live photos belong to.
@@ -904,7 +1021,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listLivePhotos");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -918,48 +1035,14 @@ Name | Type | Description  | Notes
 
 [**LivePhotosList**](LivePhotosList.md)
 
-<a name="listLiveVideos"></a>
-# **listLiveVideos**
-> LiveVideosList listLiveVideos(applicantId)
+### Authorization
 
-List live videos
+[Token](../README.md#Token)
 
-### Example
-```java
-// Import classes:
-//import com.onfido.ApiClient;
-//import com.onfido.ApiException;
-//import com.onfido.Configuration;
-//import com.onfido.auth.*;
-//import com.onfido.api.DefaultApi;
+### HTTP request headers
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
-
-DefaultApi apiInstance = new DefaultApi();
-String applicantId = "applicantId_example"; // String | The id of the applicant the live videos belong to.
-try {
-    LiveVideosList result = apiInstance.listLiveVideos(applicantId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#listLiveVideos");
-    System.err.println(e.getResponseBody());
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applicantId** | **String**| The id of the applicant the live videos belong to. |
-
-### Return type
-
-[**LiveVideosList**](LiveVideosList.md)
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="listReportTypeGroups"></a>
 # **listReportTypeGroups**
@@ -979,9 +1062,9 @@ Retrieve all report type groups
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 try {
@@ -989,7 +1072,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listReportTypeGroups");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -999,6 +1082,15 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ReportTypeGroupsList**](ReportTypeGroupsList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="listReports"></a>
 # **listReports**
@@ -1018,9 +1110,9 @@ All the reports belonging to a particular check can be listed from this endpoint
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String checkId = "checkId_example"; // String | 
@@ -1029,7 +1121,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listReports");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -1042,6 +1134,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ReportsList**](ReportsList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="listWebhooks"></a>
 # **listWebhooks**
@@ -1061,9 +1162,9 @@ List webhooks
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 try {
@@ -1071,7 +1172,7 @@ try {
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listWebhooks");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -1081,6 +1182,15 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**WebhooksList**](WebhooksList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="restoreApplicant"></a>
 # **restoreApplicant**
@@ -1100,9 +1210,9 @@ Restore Applicant
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
@@ -1110,7 +1220,7 @@ try {
     apiInstance.restoreApplicant(applicantId);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#restoreApplicant");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -1123,6 +1233,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 null (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="resumeCheck"></a>
 # **resumeCheck**
@@ -1142,9 +1261,9 @@ Resume a Check
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String checkId = "checkId_example"; // String | 
@@ -1152,7 +1271,7 @@ try {
     apiInstance.resumeCheck(checkId);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#resumeCheck");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -1165,6 +1284,15 @@ Name | Type | Description  | Notes
 ### Return type
 
 null (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="resumeReport"></a>
 # **resumeReport**
@@ -1184,9 +1312,9 @@ This endpoint is for resuming individual paused reports.
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String checkId = "checkId_example"; // String | 
@@ -1195,7 +1323,7 @@ try {
     apiInstance.resumeReport(checkId, reportId);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#resumeReport");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -1210,11 +1338,22 @@ Name | Type | Description  | Notes
 
 null (empty response body)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="updateApplicant"></a>
 # **updateApplicant**
-> Applicant updateApplicant(applicantId, data)
+> Applicant updateApplicant(applicantId, applicant)
 
 Update Applicant
+
+Allows updating of an applicant’s information before any checks are created. - Partial updates - Addresses and ID numbers present will replace existing ones - Same applicant validations to create applicant 
 
 ### Example
 ```java
@@ -1228,19 +1367,19 @@ Update Applicant
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
-Applicant data = new Applicant(); // Applicant | 
+Applicant applicant = new Applicant(); // Applicant | 
 try {
-    Applicant result = apiInstance.updateApplicant(applicantId, data);
+    Applicant result = apiInstance.updateApplicant(applicantId, applicant);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#updateApplicant");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -1249,15 +1388,24 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicantId** | **String**|  |
- **data** | [**Applicant**](Applicant.md)|  | [optional]
+ **applicant** | [**Applicant**](Applicant.md)|  |
 
 ### Return type
 
 [**Applicant**](Applicant.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="uploadDocument"></a>
 # **uploadDocument**
-> Document uploadDocument(applicantId, type, side, file)
+> Document uploadDocument(applicantId, type, file, side)
 
 Upload a document
 
@@ -1275,21 +1423,21 @@ Documents are uploaded using this endpoint. Along with the file upload the relev
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
-String type = "type_example"; // String | 
-String side = "side_example"; // String | 
-File file = new File("/path/to/file.txt"); // File | 
+String type = "type_example"; // String | The type of document.
+File file = new File("/path/to/file"); // File | The file to be uploaded.
+String side = "side_example"; // String | Either the `front` or `back` of the document.
 try {
-    Document result = apiInstance.uploadDocument(applicantId, type, side, file);
+    Document result = apiInstance.uploadDocument(applicantId, type, file, side);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#uploadDocument");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -1298,13 +1446,22 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicantId** | **String**|  |
- **type** | **String**|  |
- **side** | **String**|  | [optional]
- **file** | **File**|  | [optional]
+ **type** | **String**| The type of document. |
+ **file** | **File**| The file to be uploaded. |
+ **side** | **String**| Either the &#x60;front&#x60; or &#x60;back&#x60; of the document. | [optional]
 
 ### Return type
 
 [**Document**](Document.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
 
 <a name="uploadLivePhoto"></a>
 # **uploadLivePhoto**
@@ -1326,20 +1483,20 @@ You can upload live photos to this endpoint. Like document upload, files must be
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 // Configure API key authorization: Token
-ApiKeyAuth Token = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-Token.setApiKey("token=" + "YOUR API KEY");
-Token.setApiKeyPrefix("Token");
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String applicantId = "applicantId_example"; // String | The applicant_id to associate the live photo to.
-File file = new File("/path/to/file.txt"); // File | The file to be uploaded.
+String applicantId = "applicantId_example"; // String | 
+File file = new File("/path/to/file"); // File | The file to be uploaded.
 Boolean advancedValidation = true; // Boolean | Validates that the live photo contains exactly one face.
 try {
     LivePhoto result = apiInstance.uploadLivePhoto(applicantId, file, advancedValidation);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#uploadLivePhoto");
-    System.err.println(e.getResponseBody());
+    e.printStackTrace();
 }
 ```
 
@@ -1347,11 +1504,20 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicantId** | **String**| The applicant_id to associate the live photo to. |
+ **applicantId** | **String**|  |
  **file** | **File**| The file to be uploaded. |
- **advancedValidation** | **Boolean**| Validates that the live photo contains exactly one face. | [optional]
+ **advancedValidation** | **Boolean**| Validates that the live photo contains exactly one face. | [optional] [default to true]
 
 ### Return type
 
 [**LivePhoto**](LivePhoto.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
 

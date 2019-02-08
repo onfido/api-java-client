@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Type of ID number. Valid values are ssn, tax_id, identity_card and driving_license |  [optional]
+**type** | **String** | Type of ID number. Valid values are &#x60;ssn&#x60;, &#x60;social_insurance&#x60;, &#x60;tax_id&#x60;, &#x60;identity_card&#x60;, &#x60;passport&#x60; and &#x60;driving_license&#x60; |  [optional]
 **value** | **String** | Value of ID number |  [optional]
 **stateCode** | **String** | Two letter code of issuing state (state-issued driving licenses only) |  [optional]
 
