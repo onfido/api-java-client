@@ -39,6 +39,8 @@ import java.io.File;
 import com.onfido.models.GenericAddressesList;
 import com.onfido.models.LivePhoto;
 import com.onfido.models.LivePhotosList;
+import com.onfido.models.LiveVideo;
+import com.onfido.models.LiveVideosList;
 import com.onfido.models.Report;
 import com.onfido.models.ReportTypeGroup;
 import com.onfido.models.ReportTypeGroupsList;
@@ -945,6 +947,128 @@ public class DefaultApi {
         return call;
     }
     /**
+     * Build call for downloadLiveVideo
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call downloadLiveVideoCall(String liveVideoId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = new Object();
+
+        // create path and map variables
+        String localVarPath = "/live_videos/{live_video_id}/download"
+            .replaceAll("\\{" + "live_video_id" + "\\}", apiClient.escapeString(liveVideoId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "*/*", "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if (progressListener != null) {
+            apiClient.setHttpClient(apiClient.getHttpClient().newBuilder().addNetworkInterceptor(new okhttp3.Interceptor() {
+                @Override
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
+                }
+            }).build());
+        }
+
+        String[] localVarAuthNames = new String[] { "Token" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call downloadLiveVideoValidateBeforeCall(String liveVideoId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'liveVideoId' is set
+        if (liveVideoId == null) {
+            throw new ApiException("Missing the required parameter 'liveVideoId' when calling downloadLiveVideo(Async)");
+        }
+        
+
+        okhttp3.Call call = downloadLiveVideoCall(liveVideoId, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Download live video
+     * Live videos are downloaded using this endpoint.
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File downloadLiveVideo(String liveVideoId) throws ApiException {
+        ApiResponse<File> resp = downloadLiveVideoWithHttpInfo(liveVideoId);
+        return resp.getData();
+    }
+
+    /**
+     * Download live video
+     * Live videos are downloaded using this endpoint.
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> downloadLiveVideoWithHttpInfo(String liveVideoId) throws ApiException {
+        okhttp3.Call call = downloadLiveVideoValidateBeforeCall(liveVideoId, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Download live video (asynchronously)
+     * Live videos are downloaded using this endpoint.
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call downloadLiveVideoAsync(String liveVideoId, final ApiCallback<File> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        okhttp3.Call call = downloadLiveVideoValidateBeforeCall(liveVideoId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for findAddresses
      * @param postcode  (required)
      * @param progressListener Progress listener
@@ -1574,6 +1698,128 @@ public class DefaultApi {
 
         okhttp3.Call call = findLivePhotoValidateBeforeCall(livePhotoId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<LivePhoto>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for findLiveVideo
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call findLiveVideoCall(String liveVideoId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = new Object();
+
+        // create path and map variables
+        String localVarPath = "/live_videos/{live_video_id}"
+            .replaceAll("\\{" + "live_video_id" + "\\}", apiClient.escapeString(liveVideoId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if (progressListener != null) {
+            apiClient.setHttpClient(apiClient.getHttpClient().newBuilder().addNetworkInterceptor(new okhttp3.Interceptor() {
+                @Override
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
+                }
+            }).build());
+        }
+
+        String[] localVarAuthNames = new String[] { "Token" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call findLiveVideoValidateBeforeCall(String liveVideoId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'liveVideoId' is set
+        if (liveVideoId == null) {
+            throw new ApiException("Missing the required parameter 'liveVideoId' when calling findLiveVideo(Async)");
+        }
+        
+
+        okhttp3.Call call = findLiveVideoCall(liveVideoId, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Retrieve live video
+     * 
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @return LiveVideo
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public LiveVideo findLiveVideo(String liveVideoId) throws ApiException {
+        ApiResponse<LiveVideo> resp = findLiveVideoWithHttpInfo(liveVideoId);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieve live video
+     * 
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @return ApiResponse&lt;LiveVideo&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<LiveVideo> findLiveVideoWithHttpInfo(String liveVideoId) throws ApiException {
+        okhttp3.Call call = findLiveVideoValidateBeforeCall(liveVideoId, null, null);
+        Type localVarReturnType = new TypeToken<LiveVideo>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Retrieve live video (asynchronously)
+     * 
+     * @param liveVideoId The live video’s unique identifier. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call findLiveVideoAsync(String liveVideoId, final ApiCallback<LiveVideo> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        okhttp3.Call call = findLiveVideoValidateBeforeCall(liveVideoId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<LiveVideo>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -2471,6 +2717,131 @@ public class DefaultApi {
 
         okhttp3.Call call = listLivePhotosValidateBeforeCall(applicantId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<LivePhotosList>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listLiveVideos
+     * @param applicantId The id of the applicant the live videos belong to. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call listLiveVideosCall(String applicantId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = new Object();
+
+        // create path and map variables
+        String localVarPath = "/live_videos";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (applicantId != null) {
+            localVarQueryParams.addAll(apiClient.parameterToPair("applicant_id", applicantId));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if (progressListener != null) {
+            apiClient.setHttpClient(apiClient.getHttpClient().newBuilder().addNetworkInterceptor(new okhttp3.Interceptor() {
+                @Override
+                public okhttp3.Response intercept(okhttp3.Interceptor.Chain chain) throws IOException {
+                    okhttp3.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
+                }
+            }).build());
+        }
+
+        String[] localVarAuthNames = new String[] { "Token" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listLiveVideosValidateBeforeCall(String applicantId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'applicantId' is set
+        if (applicantId == null) {
+            throw new ApiException("Missing the required parameter 'applicantId' when calling listLiveVideos(Async)");
+        }
+        
+
+        okhttp3.Call call = listLiveVideosCall(applicantId, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * List live videos
+     * 
+     * @param applicantId The id of the applicant the live videos belong to. (required)
+     * @return LiveVideosList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public LiveVideosList listLiveVideos(String applicantId) throws ApiException {
+        ApiResponse<LiveVideosList> resp = listLiveVideosWithHttpInfo(applicantId);
+        return resp.getData();
+    }
+
+    /**
+     * List live videos
+     * 
+     * @param applicantId The id of the applicant the live videos belong to. (required)
+     * @return ApiResponse&lt;LiveVideosList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<LiveVideosList> listLiveVideosWithHttpInfo(String applicantId) throws ApiException {
+        okhttp3.Call call = listLiveVideosValidateBeforeCall(applicantId, null, null);
+        Type localVarReturnType = new TypeToken<LiveVideosList>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * List live videos (asynchronously)
+     * 
+     * @param applicantId The id of the applicant the live videos belong to. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call listLiveVideosAsync(String applicantId, final ApiCallback<LiveVideosList> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        okhttp3.Call call = listLiveVideosValidateBeforeCall(applicantId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<LiveVideosList>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

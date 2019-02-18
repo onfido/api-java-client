@@ -28,7 +28,7 @@ import java.time.OffsetDateTime;
 /**
  * LivePhoto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-08T10:17:04.685Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-18T15:40:11.893Z[GMT]")
 public class LivePhoto {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -64,10 +64,10 @@ public class LivePhoto {
   }
 
    /**
-   * The unique identifier for the document.
+   * The unique identifier for the photo.
    * @return id
   **/
-  @ApiModelProperty(value = "The unique identifier for the document.")
+  @ApiModelProperty(value = "The unique identifier for the photo.")
   public String getId() {
     return id;
   }
@@ -82,10 +82,10 @@ public class LivePhoto {
   }
 
    /**
-   * The date and time at which the document was uploaded.
+   * The date and time at which the photo was uploaded.
    * @return createdAt
   **/
-  @ApiModelProperty(value = "The date and time at which the document was uploaded.")
+  @ApiModelProperty(value = "The date and time at which the photo was uploaded.")
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -118,10 +118,10 @@ public class LivePhoto {
   }
 
    /**
-   * The uri that can be used to download the document.
+   * The uri that can be used to download the photo.
    * @return downloadHref
   **/
-  @ApiModelProperty(value = "The uri that can be used to download the document.")
+  @ApiModelProperty(value = "The uri that can be used to download the photo.")
   public String getDownloadHref() {
     return downloadHref;
   }

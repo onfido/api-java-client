@@ -11,11 +11,13 @@ Method | HTTP request | Description
 [**destroyApplicant**](DefaultApi.md#destroyApplicant) | **DELETE** /applicants/{applicant_id} | Delete Applicant
 [**downloadDocument**](DefaultApi.md#downloadDocument) | **GET** /applicants/{applicant_id}/documents/{document_id}/download | Download a documents raw data
 [**downloadLivePhoto**](DefaultApi.md#downloadLivePhoto) | **GET** /live_photos/{live_photo_id}/download | Download live photo
+[**downloadLiveVideo**](DefaultApi.md#downloadLiveVideo) | **GET** /live_videos/{live_video_id}/download | Download live video
 [**findAddresses**](DefaultApi.md#findAddresses) | **GET** /addresses/pick | Search for addresses by postcode
 [**findApplicant**](DefaultApi.md#findApplicant) | **GET** /applicants/{applicant_id} | Retrieve Applicant
 [**findCheck**](DefaultApi.md#findCheck) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
 [**findDocument**](DefaultApi.md#findDocument) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 [**findLivePhoto**](DefaultApi.md#findLivePhoto) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
+[**findLiveVideo**](DefaultApi.md#findLiveVideo) | **GET** /live_videos/{live_video_id} | Retrieve live video
 [**findReport**](DefaultApi.md#findReport) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 [**findReportTypeGroup**](DefaultApi.md#findReportTypeGroup) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
 [**findWebhook**](DefaultApi.md#findWebhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
@@ -23,6 +25,7 @@ Method | HTTP request | Description
 [**listChecks**](DefaultApi.md#listChecks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 [**listDocuments**](DefaultApi.md#listDocuments) | **GET** /applicants/{applicant_id}/documents | List documents
 [**listLivePhotos**](DefaultApi.md#listLivePhotos) | **GET** /live_photos | List live photos
+[**listLiveVideos**](DefaultApi.md#listLiveVideos) | **GET** /live_videos | List live videos
 [**listReportTypeGroups**](DefaultApi.md#listReportTypeGroups) | **GET** /report_type_groups | Retrieve all report type groups
 [**listReports**](DefaultApi.md#listReports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
 [**listWebhooks**](DefaultApi.md#listWebhooks) | **GET** /webhooks | List webhooks
@@ -404,6 +407,60 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: */*, application/json
 
+<a name="downloadLiveVideo"></a>
+# **downloadLiveVideo**
+> File downloadLiveVideo(liveVideoId)
+
+Download live video
+
+Live videos are downloaded using this endpoint.
+
+### Example
+```java
+// Import classes:
+//import com.onfido.ApiClient;
+//import com.onfido.ApiException;
+//import com.onfido.Configuration;
+//import com.onfido.auth.*;
+//import com.onfido.api.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: Token
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String liveVideoId = "liveVideoId_example"; // String | The live video’s unique identifier.
+try {
+    File result = apiInstance.downloadLiveVideo(liveVideoId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#downloadLiveVideo");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **liveVideoId** | **String**| The live video’s unique identifier. |
+
+### Return type
+
+[**File**](File.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*, application/json
+
 <a name="findAddresses"></a>
 # **findAddresses**
 > GenericAddressesList findAddresses(postcode)
@@ -658,6 +715,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LivePhoto**](LivePhoto.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="findLiveVideo"></a>
+# **findLiveVideo**
+> LiveVideo findLiveVideo(liveVideoId)
+
+Retrieve live video
+
+### Example
+```java
+// Import classes:
+//import com.onfido.ApiClient;
+//import com.onfido.ApiException;
+//import com.onfido.Configuration;
+//import com.onfido.auth.*;
+//import com.onfido.api.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: Token
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String liveVideoId = "liveVideoId_example"; // String | The live video’s unique identifier.
+try {
+    LiveVideo result = apiInstance.findLiveVideo(liveVideoId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#findLiveVideo");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **liveVideoId** | **String**| The live video’s unique identifier. |
+
+### Return type
+
+[**LiveVideo**](LiveVideo.md)
 
 ### Authorization
 
@@ -1034,6 +1143,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LivePhotosList**](LivePhotosList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="listLiveVideos"></a>
+# **listLiveVideos**
+> LiveVideosList listLiveVideos(applicantId)
+
+List live videos
+
+### Example
+```java
+// Import classes:
+//import com.onfido.ApiClient;
+//import com.onfido.ApiException;
+//import com.onfido.Configuration;
+//import com.onfido.auth.*;
+//import com.onfido.api.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: Token
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String applicantId = "applicantId_example"; // String | The id of the applicant the live videos belong to.
+try {
+    LiveVideosList result = apiInstance.listLiveVideos(applicantId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#listLiveVideos");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicantId** | **String**| The id of the applicant the live videos belong to. |
+
+### Return type
+
+[**LiveVideosList**](LiveVideosList.md)
 
 ### Authorization
 

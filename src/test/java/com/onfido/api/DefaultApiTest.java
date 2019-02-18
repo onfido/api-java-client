@@ -26,6 +26,8 @@ import java.io.File;
 import com.onfido.models.GenericAddressesList;
 import com.onfido.models.LivePhoto;
 import com.onfido.models.LivePhotosList;
+import com.onfido.models.LiveVideo;
+import com.onfido.models.LiveVideosList;
 import com.onfido.models.Report;
 import com.onfido.models.ReportTypeGroup;
 import com.onfido.models.ReportTypeGroupsList;
@@ -165,6 +167,22 @@ public class DefaultApiTest {
     }
     
     /**
+     * Download live video
+     *
+     * Live videos are downloaded using this endpoint.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void downloadLiveVideoTest() throws ApiException {
+        String liveVideoId = null;
+        File response = api.downloadLiveVideo(liveVideoId);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Search for addresses by postcode
      *
      * 
@@ -242,6 +260,22 @@ public class DefaultApiTest {
     public void findLivePhotoTest() throws ApiException {
         String livePhotoId = null;
         LivePhoto response = api.findLivePhoto(livePhotoId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Retrieve live video
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void findLiveVideoTest() throws ApiException {
+        String liveVideoId = null;
+        LiveVideo response = api.findLiveVideo(liveVideoId);
 
         // TODO: test validations
     }
@@ -359,6 +393,22 @@ public class DefaultApiTest {
     public void listLivePhotosTest() throws ApiException {
         String applicantId = null;
         LivePhotosList response = api.listLivePhotos(applicantId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List live videos
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void listLiveVideosTest() throws ApiException {
+        String applicantId = null;
+        LiveVideosList response = api.listLiveVideos(applicantId);
 
         // TODO: test validations
     }

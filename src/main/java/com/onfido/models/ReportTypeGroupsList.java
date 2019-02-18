@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * ReportTypeGroupsList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-08T10:17:04.685Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-18T15:40:11.893Z[GMT]")
 public class ReportTypeGroupsList {
   public static final String SERIALIZED_NAME_REPORT_TYPE_GROUPS = "report_type_groups";
   @SerializedName(SERIALIZED_NAME_REPORT_TYPE_GROUPS)

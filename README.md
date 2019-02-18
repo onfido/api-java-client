@@ -2,7 +2,7 @@
 
 Onfido API
 - API version: 2.0.0
-  - Build date: 2019-02-08T10:17:04.685Z[GMT]
+  - Build date: 2019-02-18T15:40:11.893Z[GMT]
 
 The Onfido API is used to submit check requests.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.onfido</groupId>
   <artifactId>onfido-java</artifactId>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.onfido:onfido-java:2.0.0"
+compile "com.onfido:onfido-java:2.1.0"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/onfido-java-2.0.0.jar`
+* `target/onfido-java-2.1.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -151,11 +151,13 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**destroyApplicant**](docs/DefaultApi.md#destroyApplicant) | **DELETE** /applicants/{applicant_id} | Delete Applicant
 *DefaultApi* | [**downloadDocument**](docs/DefaultApi.md#downloadDocument) | **GET** /applicants/{applicant_id}/documents/{document_id}/download | Download a documents raw data
 *DefaultApi* | [**downloadLivePhoto**](docs/DefaultApi.md#downloadLivePhoto) | **GET** /live_photos/{live_photo_id}/download | Download live photo
+*DefaultApi* | [**downloadLiveVideo**](docs/DefaultApi.md#downloadLiveVideo) | **GET** /live_videos/{live_video_id}/download | Download live video
 *DefaultApi* | [**findAddresses**](docs/DefaultApi.md#findAddresses) | **GET** /addresses/pick | Search for addresses by postcode
 *DefaultApi* | [**findApplicant**](docs/DefaultApi.md#findApplicant) | **GET** /applicants/{applicant_id} | Retrieve Applicant
 *DefaultApi* | [**findCheck**](docs/DefaultApi.md#findCheck) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
 *DefaultApi* | [**findDocument**](docs/DefaultApi.md#findDocument) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 *DefaultApi* | [**findLivePhoto**](docs/DefaultApi.md#findLivePhoto) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
+*DefaultApi* | [**findLiveVideo**](docs/DefaultApi.md#findLiveVideo) | **GET** /live_videos/{live_video_id} | Retrieve live video
 *DefaultApi* | [**findReport**](docs/DefaultApi.md#findReport) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 *DefaultApi* | [**findReportTypeGroup**](docs/DefaultApi.md#findReportTypeGroup) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
 *DefaultApi* | [**findWebhook**](docs/DefaultApi.md#findWebhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
@@ -163,6 +165,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**listChecks**](docs/DefaultApi.md#listChecks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 *DefaultApi* | [**listDocuments**](docs/DefaultApi.md#listDocuments) | **GET** /applicants/{applicant_id}/documents | List documents
 *DefaultApi* | [**listLivePhotos**](docs/DefaultApi.md#listLivePhotos) | **GET** /live_photos | List live photos
+*DefaultApi* | [**listLiveVideos**](docs/DefaultApi.md#listLiveVideos) | **GET** /live_videos | List live videos
 *DefaultApi* | [**listReportTypeGroups**](docs/DefaultApi.md#listReportTypeGroups) | **GET** /report_type_groups | Retrieve all report type groups
 *DefaultApi* | [**listReports**](docs/DefaultApi.md#listReports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
 *DefaultApi* | [**listWebhooks**](docs/DefaultApi.md#listWebhooks) | **GET** /webhooks | List webhooks
@@ -191,6 +194,8 @@ Class | Method | HTTP request | Description
  - [IdNumber](docs/IdNumber.md)
  - [LivePhoto](docs/LivePhoto.md)
  - [LivePhotosList](docs/LivePhotosList.md)
+ - [LiveVideo](docs/LiveVideo.md)
+ - [LiveVideosList](docs/LiveVideosList.md)
  - [Report](docs/Report.md)
  - [ReportDocument](docs/ReportDocument.md)
  - [ReportOption](docs/ReportOption.md)

@@ -13,7 +13,7 @@
 
 package com.onfido;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-08T10:17:04.685Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-18T15:40:11.893Z[GMT]")
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 
