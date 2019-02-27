@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * GenericAddress
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-18T15:40:11.893Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-27T11:31:31.783Z[GMT]")
 public class GenericAddress {
   public static final String SERIALIZED_NAME_FLAT_NUMBER = "flat_number";
   @SerializedName(SERIALIZED_NAME_FLAT_NUMBER)

@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * CheckWithReportIds
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-18T15:40:11.893Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-02-27T11:31:31.783Z[GMT]")
 public class CheckWithReportIds {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -83,19 +83,19 @@ public class CheckWithReportIds {
 
   public static final String SERIALIZED_NAME_SUPPRESS_FORM_EMAILS = "suppress_form_emails";
   @SerializedName(SERIALIZED_NAME_SUPPRESS_FORM_EMAILS)
-  private Boolean suppressFormEmails = false;
+  private Boolean suppressFormEmails;
 
   public static final String SERIALIZED_NAME_CHARGE_APPLICANT_FOR_CHECK = "charge_applicant_for_check";
   @SerializedName(SERIALIZED_NAME_CHARGE_APPLICANT_FOR_CHECK)
-  private Boolean chargeApplicantForCheck = false;
+  private Boolean chargeApplicantForCheck;
 
   public static final String SERIALIZED_NAME_BRAND_ID = "brand_id";
   @SerializedName(SERIALIZED_NAME_BRAND_ID)
   private String brandId;
 
-  public static final String SERIALIZED_NAME_ASYNC = "async";
-  @SerializedName(SERIALIZED_NAME_ASYNC)
-  private Boolean async = false;
+  public static final String SERIALIZED_NAME_ASYNCHRONOUS = "asynchronous";
+  @SerializedName(SERIALIZED_NAME_ASYNCHRONOUS)
+  private Boolean asynchronous;
 
   public static final String SERIALIZED_NAME_REPORTS = "reports";
   @SerializedName(SERIALIZED_NAME_REPORTS)
@@ -258,10 +258,10 @@ public class CheckWithReportIds {
   }
 
    /**
-   * For standard checks, applicant form will not be automatically sent if this is set to true. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only. 
+   * For standard checks, applicant form will not be automatically sent if this is set to true. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only. Defaults to false. 
    * @return suppressFormEmails
   **/
-  @ApiModelProperty(value = "For standard checks, applicant form will not be automatically sent if this is set to true. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only. ")
+  @ApiModelProperty(value = "For standard checks, applicant form will not be automatically sent if this is set to true. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only. Defaults to false. ")
   public Boolean getSuppressFormEmails() {
     return suppressFormEmails;
   }
@@ -276,10 +276,10 @@ public class CheckWithReportIds {
   }
 
    /**
-   * For standard checks, applicants will be presented with a mandatory payment screen before they can submit the applicant form, if this is set to true. In this case, your account will not be charged. Write-only. 
+   * For standard checks, applicants will be presented with a mandatory payment screen before they can submit the applicant form, if this is set to true. In this case, your account will not be charged. Write-only. Defaults to false. 
    * @return chargeApplicantForCheck
   **/
-  @ApiModelProperty(value = "For standard checks, applicants will be presented with a mandatory payment screen before they can submit the applicant form, if this is set to true. In this case, your account will not be charged. Write-only. ")
+  @ApiModelProperty(value = "For standard checks, applicants will be presented with a mandatory payment screen before they can submit the applicant form, if this is set to true. In this case, your account will not be charged. Write-only. Defaults to false. ")
   public Boolean getChargeApplicantForCheck() {
     return chargeApplicantForCheck;
   }
@@ -306,22 +306,22 @@ public class CheckWithReportIds {
     this.brandId = brandId;
   }
 
-  public CheckWithReportIds async(Boolean async) {
-    this.async = async;
+  public CheckWithReportIds asynchronous(Boolean asynchronous) {
+    this.asynchronous = asynchronous;
     return this;
   }
 
    /**
-   * If this is set to true, we will queue checks for processing and return a response immediately. You can configure webhooks to notify you when the report is complete. Write-only. 
-   * @return async
+   * If this is set to true, we will queue checks for processing and return a response immediately. You can configure webhooks to notify you when the report is complete. Write-only. Defaults to false. 
+   * @return asynchronous
   **/
-  @ApiModelProperty(value = "If this is set to true, we will queue checks for processing and return a response immediately. You can configure webhooks to notify you when the report is complete. Write-only. ")
-  public Boolean getAsync() {
-    return async;
+  @ApiModelProperty(value = "If this is set to true, we will queue checks for processing and return a response immediately. You can configure webhooks to notify you when the report is complete. Write-only. Defaults to false. ")
+  public Boolean getAsynchronous() {
+    return asynchronous;
   }
 
-  public void setAsync(Boolean async) {
-    this.async = async;
+  public void setAsynchronous(Boolean asynchronous) {
+    this.asynchronous = asynchronous;
   }
 
   public CheckWithReportIds reports(List<String> reports) {
@@ -375,13 +375,13 @@ public class CheckWithReportIds {
         Objects.equals(this.suppressFormEmails, checkWithReportIds.suppressFormEmails) &&
         Objects.equals(this.chargeApplicantForCheck, checkWithReportIds.chargeApplicantForCheck) &&
         Objects.equals(this.brandId, checkWithReportIds.brandId) &&
-        Objects.equals(this.async, checkWithReportIds.async) &&
+        Objects.equals(this.asynchronous, checkWithReportIds.asynchronous) &&
         Objects.equals(this.reports, checkWithReportIds.reports);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, href, status, result, downloadUri, formUri, redirectUri, resultsUri, type, reportTypeGroups, tags, suppressFormEmails, chargeApplicantForCheck, brandId, async, reports);
+    return Objects.hash(id, createdAt, href, status, result, downloadUri, formUri, redirectUri, resultsUri, type, reportTypeGroups, tags, suppressFormEmails, chargeApplicantForCheck, brandId, asynchronous, reports);
   }
 
 
@@ -404,7 +404,7 @@ public class CheckWithReportIds {
     sb.append("    suppressFormEmails: ").append(toIndentedString(suppressFormEmails)).append("\n");
     sb.append("    chargeApplicantForCheck: ").append(toIndentedString(chargeApplicantForCheck)).append("\n");
     sb.append("    brandId: ").append(toIndentedString(brandId)).append("\n");
-    sb.append("    async: ").append(toIndentedString(async)).append("\n");
+    sb.append("    asynchronous: ").append(toIndentedString(asynchronous)).append("\n");
     sb.append("    reports: ").append(toIndentedString(reports)).append("\n");
     sb.append("}");
     return sb.toString();

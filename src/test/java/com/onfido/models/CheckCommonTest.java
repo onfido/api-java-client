@@ -164,11 +164,11 @@ public class CheckCommonTest {
     }
 
     /**
-     * Test the property 'async'
+     * Test the property 'asynchronous'
      */
     @Test
-    public void asyncTest() {
-        // TODO: test async
+    public void asynchronousTest() {
+        // TODO: test asynchronous
     }
 
 }

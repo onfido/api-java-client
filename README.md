@@ -2,7 +2,7 @@
 
 Onfido API
 - API version: 2.0.0
-  - Build date: 2019-02-18T15:40:11.893Z[GMT]
+  - Build date: 2019-02-27T11:31:31.783Z[GMT]
 
 The Onfido API is used to submit check requests.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.onfido</groupId>
   <artifactId>onfido-java</artifactId>
-  <version>2.1.0</version>
+  <version>3.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.onfido:onfido-java:2.1.0"
+compile "com.onfido:onfido-java:3.0.0"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/onfido-java-2.1.0.jar`
+* `target/onfido-java-3.0.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
