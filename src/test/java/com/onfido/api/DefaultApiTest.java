@@ -32,6 +32,8 @@ import com.onfido.models.Report;
 import com.onfido.models.ReportTypeGroup;
 import com.onfido.models.ReportTypeGroupsList;
 import com.onfido.models.ReportsList;
+import com.onfido.models.SdkTokenRequest;
+import com.onfido.models.SdkTokenResponse;
 import com.onfido.models.Webhook;
 import com.onfido.models.WebhooksList;
 import org.junit.Test;
@@ -325,6 +327,22 @@ public class DefaultApiTest {
     public void findWebhookTest() throws ApiException {
         String webhookId = null;
         Webhook response = api.findWebhook(webhookId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Generate a SDK token
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void generateSdkTokenTest() throws ApiException {
+        SdkTokenRequest sdkTokenRequest = null;
+        SdkTokenResponse response = api.generateSdkToken(sdkTokenRequest);
 
         // TODO: test validations
     }

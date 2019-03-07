@@ -20,46 +20,35 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.onfido.models.LiveVideo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * LiveVideosList
+ * SdkTokenResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-03-07T15:33:35.406Z[GMT]")
-public class LiveVideosList {
-  public static final String SERIALIZED_NAME_LIVE_VIDEOS = "live_videos";
-  @SerializedName(SERIALIZED_NAME_LIVE_VIDEOS)
-  private List<LiveVideo> liveVideos = new ArrayList<>();
+public class SdkTokenResponse {
+  public static final String SERIALIZED_NAME_TOKEN = "token";
+  @SerializedName(SERIALIZED_NAME_TOKEN)
+  private String token;
 
-  public LiveVideosList liveVideos(List<LiveVideo> liveVideos) {
-    this.liveVideos = liveVideos;
-    return this;
-  }
-
-  public LiveVideosList addLiveVideosItem(LiveVideo liveVideosItem) {
-    if (this.liveVideos == null) {
-      this.liveVideos = new ArrayList<>();
-    }
-    this.liveVideos.add(liveVideosItem);
+  public SdkTokenResponse token(String token) {
+    this.token = token;
     return this;
   }
 
    /**
-   * Get liveVideos
-   * @return liveVideos
+   * The generated SDK token
+   * @return token
   **/
-  @ApiModelProperty(value = "")
-  public List<LiveVideo> getLiveVideos() {
-    return liveVideos;
+  @ApiModelProperty(value = "The generated SDK token")
+  public String getToken() {
+    return token;
   }
 
-  public void setLiveVideos(List<LiveVideo> liveVideos) {
-    this.liveVideos = liveVideos;
+  public void setToken(String token) {
+    this.token = token;
   }
 
 
@@ -71,21 +60,21 @@ public class LiveVideosList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LiveVideosList liveVideosList = (LiveVideosList) o;
-    return Objects.equals(this.liveVideos, liveVideosList.liveVideos);
+    SdkTokenResponse sdkTokenResponse = (SdkTokenResponse) o;
+    return Objects.equals(this.token, sdkTokenResponse.token);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(liveVideos);
+    return Objects.hash(token);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LiveVideosList {\n");
-    sb.append("    liveVideos: ").append(toIndentedString(liveVideos)).append("\n");
+    sb.append("class SdkTokenResponse {\n");
+    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -2,7 +2,7 @@
 
 Onfido API
 - API version: 2.0.0
-  - Build date: 2019-02-27T11:31:31.783Z[GMT]
+  - Build date: 2019-03-07T15:33:35.406Z[GMT]
 
 The Onfido API is used to submit check requests.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.onfido</groupId>
   <artifactId>onfido-java</artifactId>
-  <version>3.0.0</version>
+  <version>3.1.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.onfido:onfido-java:3.0.0"
+compile "com.onfido:onfido-java:3.1.0"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/onfido-java-3.0.0.jar`
+* `target/onfido-java-3.1.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -161,6 +161,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**findReport**](docs/DefaultApi.md#findReport) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 *DefaultApi* | [**findReportTypeGroup**](docs/DefaultApi.md#findReportTypeGroup) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
 *DefaultApi* | [**findWebhook**](docs/DefaultApi.md#findWebhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
+*DefaultApi* | [**generateSdkToken**](docs/DefaultApi.md#generateSdkToken) | **POST** /sdk_token | Generate a SDK token
 *DefaultApi* | [**listApplicants**](docs/DefaultApi.md#listApplicants) | **GET** /applicants | List Applicants
 *DefaultApi* | [**listChecks**](docs/DefaultApi.md#listChecks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 *DefaultApi* | [**listDocuments**](docs/DefaultApi.md#listDocuments) | **GET** /applicants/{applicant_id}/documents | List documents
@@ -203,6 +204,8 @@ Class | Method | HTTP request | Description
  - [ReportTypeGroup](docs/ReportTypeGroup.md)
  - [ReportTypeGroupsList](docs/ReportTypeGroupsList.md)
  - [ReportsList](docs/ReportsList.md)
+ - [SdkTokenRequest](docs/SdkTokenRequest.md)
+ - [SdkTokenResponse](docs/SdkTokenResponse.md)
  - [Webhook](docs/Webhook.md)
  - [WebhooksList](docs/WebhooksList.md)
 

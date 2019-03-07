@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**findReport**](DefaultApi.md#findReport) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 [**findReportTypeGroup**](DefaultApi.md#findReportTypeGroup) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
 [**findWebhook**](DefaultApi.md#findWebhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
+[**generateSdkToken**](DefaultApi.md#generateSdkToken) | **POST** /sdk_token | Generate a SDK token
 [**listApplicants**](DefaultApi.md#listApplicants) | **GET** /applicants | List Applicants
 [**listChecks**](DefaultApi.md#listChecks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 [**listDocuments**](DefaultApi.md#listDocuments) | **GET** /applicants/{applicant_id}/documents | List documents
@@ -933,6 +934,58 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="generateSdkToken"></a>
+# **generateSdkToken**
+> SdkTokenResponse generateSdkToken(sdkTokenRequest)
+
+Generate a SDK token
+
+### Example
+```java
+// Import classes:
+//import com.onfido.ApiClient;
+//import com.onfido.ApiException;
+//import com.onfido.Configuration;
+//import com.onfido.auth.*;
+//import com.onfido.api.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: Token
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+SdkTokenRequest sdkTokenRequest = new SdkTokenRequest(); // SdkTokenRequest | 
+try {
+    SdkTokenResponse result = apiInstance.generateSdkToken(sdkTokenRequest);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#generateSdkToken");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sdkTokenRequest** | [**SdkTokenRequest**](SdkTokenRequest.md)|  |
+
+### Return type
+
+[**SdkTokenResponse**](SdkTokenResponse.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="listApplicants"></a>
