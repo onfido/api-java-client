@@ -28,7 +28,7 @@ import java.time.OffsetDateTime;
 /**
  * Document
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-03-07T15:33:35.406Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-03-29T09:56:49.532Z[GMT]")
 public class Document {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -57,6 +57,10 @@ public class Document {
   public static final String SERIALIZED_NAME_SIDE = "side";
   @SerializedName(SERIALIZED_NAME_SIDE)
   private String side;
+
+  public static final String SERIALIZED_NAME_ISSUING_COUNTRY = "issuing_country";
+  @SerializedName(SERIALIZED_NAME_ISSUING_COUNTRY)
+  private String issuingCountry;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -192,6 +196,24 @@ public class Document {
     this.side = side;
   }
 
+  public Document issuingCountry(String issuingCountry) {
+    this.issuingCountry = issuingCountry;
+    return this;
+  }
+
+   /**
+   * The issuing country of the document, a 3-letter ISO code.
+   * @return issuingCountry
+  **/
+  @ApiModelProperty(value = "The issuing country of the document, a 3-letter ISO code.")
+  public String getIssuingCountry() {
+    return issuingCountry;
+  }
+
+  public void setIssuingCountry(String issuingCountry) {
+    this.issuingCountry = issuingCountry;
+  }
+
   public Document href(String href) {
     this.href = href;
     return this;
@@ -245,13 +267,14 @@ public class Document {
         Objects.equals(this.fileType, document.fileType) &&
         Objects.equals(this.type, document.type) &&
         Objects.equals(this.side, document.side) &&
+        Objects.equals(this.issuingCountry, document.issuingCountry) &&
         Objects.equals(this.href, document.href) &&
         Objects.equals(this.downloadHref, document.downloadHref);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, fileName, fileSize, fileType, type, side, href, downloadHref);
+    return Objects.hash(id, createdAt, fileName, fileSize, fileType, type, side, issuingCountry, href, downloadHref);
   }
 
 
@@ -266,6 +289,7 @@ public class Document {
     sb.append("    fileType: ").append(toIndentedString(fileType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
+    sb.append("    issuingCountry: ").append(toIndentedString(issuingCountry)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    downloadHref: ").append(toIndentedString(downloadHref)).append("\n");
     sb.append("}");

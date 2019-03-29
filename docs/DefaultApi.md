@@ -1619,7 +1619,7 @@ Name | Type | Description  | Notes
 
 <a name="uploadDocument"></a>
 # **uploadDocument**
-> Document uploadDocument(applicantId, type, file, side)
+> Document uploadDocument(applicantId, type, file, side, issuingCountry)
 
 Upload a document
 
@@ -1646,8 +1646,9 @@ String applicantId = "applicantId_example"; // String |
 String type = "type_example"; // String | The type of document.
 File file = new File("/path/to/file"); // File | The file to be uploaded.
 String side = "side_example"; // String | Either the `front` or `back` of the document.
+String issuingCountry = "issuingCountry_example"; // String | The issuing country of the document, a 3-letter ISO code.
 try {
-    Document result = apiInstance.uploadDocument(applicantId, type, file, side);
+    Document result = apiInstance.uploadDocument(applicantId, type, file, side, issuingCountry);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#uploadDocument");
@@ -1663,6 +1664,7 @@ Name | Type | Description  | Notes
  **type** | **String**| The type of document. |
  **file** | **File**| The file to be uploaded. |
  **side** | **String**| Either the &#x60;front&#x60; or &#x60;back&#x60; of the document. | [optional]
+ **issuingCountry** | **String**| The issuing country of the document, a 3-letter ISO code. | [optional]
 
 ### Return type
 

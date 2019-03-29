@@ -98,6 +98,14 @@ public class DocumentTest {
     }
 
     /**
+     * Test the property 'issuingCountry'
+     */
+    @Test
+    public void issuingCountryTest() {
+        // TODO: test issuingCountry
+    }
+
+    /**
      * Test the property 'href'
      */
     @Test

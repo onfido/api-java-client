@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **fileType** | **String** | The file type of the uploaded file |  [optional]
 **type** | **String** | The type of document |  [optional]
 **side** | **String** | The side of the document, if applicable. The possible values are front and back |  [optional]
+**issuingCountry** | **String** | The issuing country of the document, a 3-letter ISO code. |  [optional]
 **href** | **String** | The uri of this resource |  [optional]
 **downloadHref** | **String** | The uri that can be used to download the document |  [optional]
 

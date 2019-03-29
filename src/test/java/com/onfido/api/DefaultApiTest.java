@@ -557,7 +557,8 @@ public class DefaultApiTest {
         String type = null;
         File file = null;
         String side = null;
-        Document response = api.uploadDocument(applicantId, type, file, side);
+        String issuingCountry = null;
+        Document response = api.uploadDocument(applicantId, type, file, side, issuingCountry);
 
         // TODO: test validations
     }

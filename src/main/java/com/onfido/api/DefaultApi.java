@@ -3815,12 +3815,13 @@ public class DefaultApi {
      * @param type The type of document. (required)
      * @param file The file to be uploaded. (required)
      * @param side Either the &#x60;front&#x60; or &#x60;back&#x60; of the document. (optional)
+     * @param issuingCountry The issuing country of the document, a 3-letter ISO code. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call uploadDocumentCall(String applicantId, String type, File file, String side, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public okhttp3.Call uploadDocumentCall(String applicantId, String type, File file, String side, String issuingCountry, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = new Object();
 
         // create path and map variables
@@ -3835,12 +3836,16 @@ public class DefaultApi {
             localVarFormParams.put("type", type);
         }
 
+        if (file != null) {
+            localVarFormParams.put("file", file);
+        }
+
         if (side != null) {
             localVarFormParams.put("side", side);
         }
 
-        if (file != null) {
-            localVarFormParams.put("file", file);
+        if (issuingCountry != null) {
+            localVarFormParams.put("issuing_country", issuingCountry);
         }
 
         final String[] localVarAccepts = {
@@ -3874,7 +3879,7 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call uploadDocumentValidateBeforeCall(String applicantId, String type, File file, String side, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call uploadDocumentValidateBeforeCall(String applicantId, String type, File file, String side, String issuingCountry, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'applicantId' is set
         if (applicantId == null) {
@@ -3892,7 +3897,7 @@ public class DefaultApi {
         }
         
 
-        okhttp3.Call call = uploadDocumentCall(applicantId, type, file, side, progressListener, progressRequestListener);
+        okhttp3.Call call = uploadDocumentCall(applicantId, type, file, side, issuingCountry, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3904,11 +3909,12 @@ public class DefaultApi {
      * @param type The type of document. (required)
      * @param file The file to be uploaded. (required)
      * @param side Either the &#x60;front&#x60; or &#x60;back&#x60; of the document. (optional)
+     * @param issuingCountry The issuing country of the document, a 3-letter ISO code. (optional)
      * @return Document
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Document uploadDocument(String applicantId, String type, File file, String side) throws ApiException {
-        ApiResponse<Document> resp = uploadDocumentWithHttpInfo(applicantId, type, file, side);
+    public Document uploadDocument(String applicantId, String type, File file, String side, String issuingCountry) throws ApiException {
+        ApiResponse<Document> resp = uploadDocumentWithHttpInfo(applicantId, type, file, side, issuingCountry);
         return resp.getData();
     }
 
@@ -3919,11 +3925,12 @@ public class DefaultApi {
      * @param type The type of document. (required)
      * @param file The file to be uploaded. (required)
      * @param side Either the &#x60;front&#x60; or &#x60;back&#x60; of the document. (optional)
+     * @param issuingCountry The issuing country of the document, a 3-letter ISO code. (optional)
      * @return ApiResponse&lt;Document&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Document> uploadDocumentWithHttpInfo(String applicantId, String type, File file, String side) throws ApiException {
-        okhttp3.Call call = uploadDocumentValidateBeforeCall(applicantId, type, file, side, null, null);
+    public ApiResponse<Document> uploadDocumentWithHttpInfo(String applicantId, String type, File file, String side, String issuingCountry) throws ApiException {
+        okhttp3.Call call = uploadDocumentValidateBeforeCall(applicantId, type, file, side, issuingCountry, null, null);
         Type localVarReturnType = new TypeToken<Document>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3935,11 +3942,12 @@ public class DefaultApi {
      * @param type The type of document. (required)
      * @param file The file to be uploaded. (required)
      * @param side Either the &#x60;front&#x60; or &#x60;back&#x60; of the document. (optional)
+     * @param issuingCountry The issuing country of the document, a 3-letter ISO code. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call uploadDocumentAsync(String applicantId, String type, File file, String side, final ApiCallback<Document> callback) throws ApiException {
+    public okhttp3.Call uploadDocumentAsync(String applicantId, String type, File file, String side, String issuingCountry, final ApiCallback<Document> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3960,7 +3968,7 @@ public class DefaultApi {
             };
         }
 
-        okhttp3.Call call = uploadDocumentValidateBeforeCall(applicantId, type, file, side, progressListener, progressRequestListener);
+        okhttp3.Call call = uploadDocumentValidateBeforeCall(applicantId, type, file, side, issuingCountry, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Document>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
