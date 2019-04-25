@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * LiveVideosList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-03-29T09:56:49.532Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-04-25T11:17:56.186Z[GMT]")
 public class LiveVideosList {
   public static final String SERIALIZED_NAME_LIVE_VIDEOS = "live_videos";
   @SerializedName(SERIALIZED_NAME_LIVE_VIDEOS)
