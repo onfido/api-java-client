@@ -2,7 +2,7 @@
 
 Onfido API
 - API version: 2.0.0
-  - Build date: 2019-04-25T11:17:56.186Z[GMT]
+  - Build date: 2019-06-06T14:26:48.203Z[GMT]
 
 The Onfido API is used to submit check requests.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.onfido</groupId>
   <artifactId>onfido-java</artifactId>
-  <version>4.0.1</version>
+  <version>4.1.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.onfido:onfido-java:4.0.1"
+compile "com.onfido:onfido-java:4.1.0"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/onfido-java-4.0.1.jar`
+* `target/onfido-java-4.1.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -148,10 +148,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**createApplicant**](docs/DefaultApi.md#createApplicant) | **POST** /applicants | Create Applicant
 *DefaultApi* | [**createCheck**](docs/DefaultApi.md#createCheck) | **POST** /applicants/{applicant_id}/checks | Create a check
 *DefaultApi* | [**createWebhook**](docs/DefaultApi.md#createWebhook) | **POST** /webhooks | Create a webhook
+*DefaultApi* | [**deleteWebhook**](docs/DefaultApi.md#deleteWebhook) | **DELETE** /webhooks/{webhook_id} | Delete a webhook
 *DefaultApi* | [**destroyApplicant**](docs/DefaultApi.md#destroyApplicant) | **DELETE** /applicants/{applicant_id} | Delete Applicant
 *DefaultApi* | [**downloadDocument**](docs/DefaultApi.md#downloadDocument) | **GET** /applicants/{applicant_id}/documents/{document_id}/download | Download a documents raw data
 *DefaultApi* | [**downloadLivePhoto**](docs/DefaultApi.md#downloadLivePhoto) | **GET** /live_photos/{live_photo_id}/download | Download live photo
 *DefaultApi* | [**downloadLiveVideo**](docs/DefaultApi.md#downloadLiveVideo) | **GET** /live_videos/{live_video_id}/download | Download live video
+*DefaultApi* | [**editWebhook**](docs/DefaultApi.md#editWebhook) | **PUT** /webhooks/{webhook_id} | Edit a webhook
 *DefaultApi* | [**findAddresses**](docs/DefaultApi.md#findAddresses) | **GET** /addresses/pick | Search for addresses by postcode
 *DefaultApi* | [**findApplicant**](docs/DefaultApi.md#findApplicant) | **GET** /applicants/{applicant_id} | Retrieve Applicant
 *DefaultApi* | [**findCheck**](docs/DefaultApi.md#findCheck) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check

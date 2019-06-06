@@ -120,6 +120,22 @@ public class DefaultApiTest {
     }
     
     /**
+     * Delete a webhook
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void deleteWebhookTest() throws ApiException {
+        String webhookId = null;
+        api.deleteWebhook(webhookId);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Delete Applicant
      *
      * 
@@ -180,6 +196,23 @@ public class DefaultApiTest {
     public void downloadLiveVideoTest() throws ApiException {
         String liveVideoId = null;
         File response = api.downloadLiveVideo(liveVideoId);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Edit a webhook
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void editWebhookTest() throws ApiException {
+        String webhookId = null;
+        Webhook webhook = null;
+        Webhook response = api.editWebhook(webhookId, webhook);
 
         // TODO: test validations
     }

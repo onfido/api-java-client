@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * CheckWithReportIds
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-04-25T11:17:56.186Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-06-06T14:26:48.203Z[GMT]")
 public class CheckWithReportIds {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

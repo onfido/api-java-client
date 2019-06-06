@@ -8,10 +8,12 @@ Method | HTTP request | Description
 [**createApplicant**](DefaultApi.md#createApplicant) | **POST** /applicants | Create Applicant
 [**createCheck**](DefaultApi.md#createCheck) | **POST** /applicants/{applicant_id}/checks | Create a check
 [**createWebhook**](DefaultApi.md#createWebhook) | **POST** /webhooks | Create a webhook
+[**deleteWebhook**](DefaultApi.md#deleteWebhook) | **DELETE** /webhooks/{webhook_id} | Delete a webhook
 [**destroyApplicant**](DefaultApi.md#destroyApplicant) | **DELETE** /applicants/{applicant_id} | Delete Applicant
 [**downloadDocument**](DefaultApi.md#downloadDocument) | **GET** /applicants/{applicant_id}/documents/{document_id}/download | Download a documents raw data
 [**downloadLivePhoto**](DefaultApi.md#downloadLivePhoto) | **GET** /live_photos/{live_photo_id}/download | Download live photo
 [**downloadLiveVideo**](DefaultApi.md#downloadLiveVideo) | **GET** /live_videos/{live_video_id}/download | Download live video
+[**editWebhook**](DefaultApi.md#editWebhook) | **PUT** /webhooks/{webhook_id} | Edit a webhook
 [**findAddresses**](DefaultApi.md#findAddresses) | **GET** /addresses/pick | Search for addresses by postcode
 [**findApplicant**](DefaultApi.md#findApplicant) | **GET** /applicants/{applicant_id} | Retrieve Applicant
 [**findCheck**](DefaultApi.md#findCheck) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
@@ -249,6 +251,57 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="deleteWebhook"></a>
+# **deleteWebhook**
+> deleteWebhook(webhookId)
+
+Delete a webhook
+
+### Example
+```java
+// Import classes:
+//import com.onfido.ApiClient;
+//import com.onfido.ApiException;
+//import com.onfido.Configuration;
+//import com.onfido.auth.*;
+//import com.onfido.api.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: Token
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String webhookId = "webhookId_example"; // String | 
+try {
+    apiInstance.deleteWebhook(webhookId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#deleteWebhook");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhookId** | **String**|  |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="destroyApplicant"></a>
 # **destroyApplicant**
 > destroyApplicant(applicantId)
@@ -461,6 +514,60 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: */*, application/json
+
+<a name="editWebhook"></a>
+# **editWebhook**
+> Webhook editWebhook(webhookId, webhook)
+
+Edit a webhook
+
+### Example
+```java
+// Import classes:
+//import com.onfido.ApiClient;
+//import com.onfido.ApiException;
+//import com.onfido.Configuration;
+//import com.onfido.auth.*;
+//import com.onfido.api.DefaultApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: Token
+ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
+tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
+tokenAuth.setApiKeyPrefix("Token");
+
+DefaultApi apiInstance = new DefaultApi();
+String webhookId = "webhookId_example"; // String | 
+Webhook webhook = new Webhook(); // Webhook | 
+try {
+    Webhook result = apiInstance.editWebhook(webhookId, webhook);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#editWebhook");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhookId** | **String**|  |
+ **webhook** | [**Webhook**](Webhook.md)|  |
+
+### Return type
+
+[**Webhook**](Webhook.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="findAddresses"></a>
 # **findAddresses**
