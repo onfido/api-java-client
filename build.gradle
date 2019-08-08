@@ -3,7 +3,7 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 
 group = 'com.onfido'
-version = '4.1.0'
+version = '4.2.0'
 
 buildscript {
     repositories {

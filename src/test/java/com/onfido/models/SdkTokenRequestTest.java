@@ -56,4 +56,12 @@ public class SdkTokenRequestTest {
         // TODO: test referrer
     }
 
+    /**
+     * Test the property 'applicationId'
+     */
+    @Test
+    public void applicationIdTest() {
+        // TODO: test applicationId
+    }
+
 }
