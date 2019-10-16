@@ -1,0 +1,59 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: docker-local-artifacts.tw.ee/circle_openjdk12
+        user: circleci
+    resource_class: small
+    environment:
+      TERM: vt100
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - gradle-cache-{{ checksum "build.gradle" }}
+      - run:
+          name: Install dependencies
+          command: ./gradlew dependencies testClasses --console=plain
+      - run:
+          name: Run tests
+          command: ./gradlew test --info --console=plain
+      - store_test_results:
+          path: build/test-results/
+      - store_artifacts:
+          path: build/test-results/
+      - save_cache:
+          key: gradle-cache-{{ checksum "build.gradle" }}
+          paths:
+            - "~/.gradle"
+  release:
+    docker:
+      - image: docker-local-artifacts.tw.ee/circle_openjdk12
+        user: circleci
+    resource_class: small
+    environment:
+      TERM: vt100
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - gradle-cache-{{ checksum "build.gradle" }}
+      - run:
+          name: Set git config
+          command: git config --global user.name "TransferWise CircleCI" && git config --global user.email circle@circle.tw.ee
+      - run:
+          name: Publish release
+          command: ./gradlew release -Prelease.useAutomaticVersion=true --console=plain
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - test
+      - release:
+          context: artifactory-deploy
+          requires:
+            - test
+          filters:
+            branches:
+              only: master

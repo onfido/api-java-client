@@ -106,3 +106,28 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
     testCompile 'junit:junit:4.12'
 }
+
+release {
+    failOnUnversionedFiles = false
+    tagTemplate = '$name-$version'
+    preTagCommitMessage = "[ci skip] pre tag commit: "
+    tagCommitMessage = "[ci skip] creating tag: "
+    newVersionCommitMessage = "[ci skip] new version commit: "
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            snapshotRepository(url: "https://arti.tw.ee/artifactory/libs-snapshot-local") {
+                authentication(userName: artifactoryUser, password: artifactoryPassword)
+            }
+            repository(url: "https://arti.tw.ee/artifactory/libs-release-local") {
+                authentication(userName: artifactoryUser, password: artifactoryPassword)
+            }
+        }
+    }
+}
+
+createReleaseTag.dependsOn uploadArchives
+
+
