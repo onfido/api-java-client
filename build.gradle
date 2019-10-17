@@ -9,10 +9,12 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
+        maven { url 'https://arti.tw.ee/artifactory/plugins-release' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.+'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'net.researchgate:gradle-release:2.6.0'
     }
 }
 
@@ -81,6 +83,7 @@ if(hasProperty('target') && target == 'android') {
 
     apply plugin: 'java'
     apply plugin: 'maven'
+    apply plugin: 'net.researchgate.release'
 
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
@@ -109,6 +112,15 @@ dependencies {
 
 ext.artifactoryUser = project.hasProperty("artifactoryUser") ? project.artifactoryUser : System.env.ARTIFACTORY_USER as String
 ext.artifactoryPassword = project.hasProperty("artifactoryPassword") ? project.artifactoryPassword : System.env.ARTIFACTORY_PASSWORD as String
+
+release {
+    failOnUnversionedFiles = false
+    tagTemplate = '$name-$version'
+    preTagCommitMessage = "[ci skip] pre tag commit: "
+    tagCommitMessage = "[ci skip] creating tag: "
+    newVersionCommitMessage = "[ci skip] new version commit: "
+}
+
 
 uploadArchives {
     repositories {

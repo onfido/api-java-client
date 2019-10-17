@@ -38,6 +38,9 @@ jobs:
       - restore_cache:
           keys:
             - gradle-cache-{{ checksum "build.gradle" }}
+      - add_ssh_keys:
+          fingerprints:
+            - ""
       - run:
           name: Set git config
           command: git config --global user.name "TransferWise CircleCI" && git config --global user.email circle@circle.tw.ee
