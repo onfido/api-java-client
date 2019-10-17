@@ -2,7 +2,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: docker-local-artifacts.tw.ee/circle_openjdk12
+      - image: docker.tw.ee/circle_oracle_jvm8:8u181
         user: circleci
     resource_class: small
     environment:
