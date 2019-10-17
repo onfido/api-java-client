@@ -107,6 +107,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+ext.artifactoryUser = project.hasProperty("artifactoryUser") ? project.artifactoryUser : System.env.ARTIFACTORY_USER as String
+ext.artifactoryPassword = project.hasProperty("artifactoryPassword") ? project.artifactoryPassword : System.env.ARTIFACTORY_PASSWORD as String
+
 uploadArchives {
     repositories {
         mavenDeployer {
