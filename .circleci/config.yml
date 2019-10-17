@@ -14,10 +14,10 @@ jobs:
             - gradle-cache-{{ checksum "build.gradle" }}
       - run:
           name: Install dependencies
-          command: ./gradlew dependencies testClasses --console=plain
+          command: bash ./gradlew dependencies testClasses --console=plain
       - run:
           name: Run tests
-          command: ./gradlew test --info --console=plain
+          command: bash ./gradlew test --info --console=plain
       - store_test_results:
           path: build/test-results/
       - store_artifacts:
@@ -43,7 +43,7 @@ jobs:
           command: git config --global user.name "TransferWise CircleCI" && git config --global user.email circle@circle.tw.ee
       - run:
           name: Publish release
-          command: ./gradlew release -Prelease.useAutomaticVersion=true --console=plain
+          command: bash ./gradlew release -Prelease.useAutomaticVersion=true --console=plain
 
 workflows:
   version: 2
@@ -56,4 +56,5 @@ workflows:
             - test
           filters:
             branches:
-              only: master
+              only: branch-tw.*
+

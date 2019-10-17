@@ -107,14 +107,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-release {
-    failOnUnversionedFiles = false
-    tagTemplate = '$name-$version'
-    preTagCommitMessage = "[ci skip] pre tag commit: "
-    tagCommitMessage = "[ci skip] creating tag: "
-    newVersionCommitMessage = "[ci skip] new version commit: "
-}
-
 uploadArchives {
     repositories {
         mavenDeployer {
@@ -127,7 +119,4 @@ uploadArchives {
         }
     }
 }
-
-createReleaseTag.dependsOn uploadArchives
-
 
