@@ -29,7 +29,7 @@ import java.time.LocalDate;
 /**
  * Address
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-08-08T09:20:21.785Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2019-11-13T10:18:58.718Z[GMT]")
 public class Address {
   public static final String SERIALIZED_NAME_FLAT_NUMBER = "flat_number";
   @SerializedName(SERIALIZED_NAME_FLAT_NUMBER)
@@ -74,6 +74,18 @@ public class Address {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   private String state;
+
+  public static final String SERIALIZED_NAME_LINE1 = "line1";
+  @SerializedName(SERIALIZED_NAME_LINE1)
+  private String line1;
+
+  public static final String SERIALIZED_NAME_LINE2 = "line2";
+  @SerializedName(SERIALIZED_NAME_LINE2)
+  private String line2;
+
+  public static final String SERIALIZED_NAME_LINE3 = "line3";
+  @SerializedName(SERIALIZED_NAME_LINE3)
+  private String line3;
 
   public Address flatNumber(String flatNumber) {
     this.flatNumber = flatNumber;
@@ -273,6 +285,60 @@ public class Address {
     this.state = state;
   }
 
+  public Address line1(String line1) {
+    this.line1 = line1;
+    return this;
+  }
+
+   /**
+   * Line 1 of the applicant&#39;s address
+   * @return line1
+  **/
+  @ApiModelProperty(value = "Line 1 of the applicant's address")
+  public String getLine1() {
+    return line1;
+  }
+
+  public void setLine1(String line1) {
+    this.line1 = line1;
+  }
+
+  public Address line2(String line2) {
+    this.line2 = line2;
+    return this;
+  }
+
+   /**
+   * Line 2 of the applicant&#39;s address
+   * @return line2
+  **/
+  @ApiModelProperty(value = "Line 2 of the applicant's address")
+  public String getLine2() {
+    return line2;
+  }
+
+  public void setLine2(String line2) {
+    this.line2 = line2;
+  }
+
+  public Address line3(String line3) {
+    this.line3 = line3;
+    return this;
+  }
+
+   /**
+   * Line 3 of the applicant&#39;s address
+   * @return line3
+  **/
+  @ApiModelProperty(value = "Line 3 of the applicant's address")
+  public String getLine3() {
+    return line3;
+  }
+
+  public void setLine3(String line3) {
+    this.line3 = line3;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -293,12 +359,15 @@ public class Address {
         Objects.equals(this.country, address.country) &&
         Objects.equals(this.startDate, address.startDate) &&
         Objects.equals(this.endDate, address.endDate) &&
-        Objects.equals(this.state, address.state);
+        Objects.equals(this.state, address.state) &&
+        Objects.equals(this.line1, address.line1) &&
+        Objects.equals(this.line2, address.line2) &&
+        Objects.equals(this.line3, address.line3);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(flatNumber, buildingNumber, buildingName, street, subStreet, town, postcode, country, startDate, endDate, state);
+    return Objects.hash(flatNumber, buildingNumber, buildingName, street, subStreet, town, postcode, country, startDate, endDate, state, line1, line2, line3);
   }
 
 
@@ -317,6 +386,9 @@ public class Address {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
+    sb.append("    line1: ").append(toIndentedString(line1)).append("\n");
+    sb.append("    line2: ").append(toIndentedString(line2)).append("\n");
+    sb.append("    line3: ").append(toIndentedString(line3)).append("\n");
     sb.append("}");
     return sb.toString();
   }

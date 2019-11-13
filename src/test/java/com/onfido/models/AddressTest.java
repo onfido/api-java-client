@@ -66,4 +66,28 @@ public class AddressTest {
         // TODO: test state
     }
 
+    /**
+     * Test the property 'line1'
+     */
+    @Test
+    public void line1Test() {
+        // TODO: test line1
+    }
+
+    /**
+     * Test the property 'line2'
+     */
+    @Test
+    public void line2Test() {
+        // TODO: test line2
+    }
+
+    /**
+     * Test the property 'line3'
+     */
+    @Test
+    public void line3Test() {
+        // TODO: test line3
+    }
+
 }

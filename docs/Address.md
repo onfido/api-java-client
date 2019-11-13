@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **startDate** | [**LocalDate**](LocalDate.md) | The date the applicant started living at this address |  [optional]
 **endDate** | [**LocalDate**](LocalDate.md) | The date the applicant left this address. If current residence, leave null |  [optional]
 **state** | **String** | The address state. US states must use the USPS abbreviation (see also ISO 3166-2:US), for example AK, CA, or TX. |  [optional]
+**line1** | **String** | Line 1 of the applicant&#39;s address |  [optional]
+**line2** | **String** | Line 2 of the applicant&#39;s address |  [optional]
+**line3** | **String** | Line 3 of the applicant&#39;s address |  [optional]
 
 
 
