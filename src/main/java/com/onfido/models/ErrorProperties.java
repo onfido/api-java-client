@@ -23,34 +23,37 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * IdNumber
+ * ErrorProperties
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-01-13T16:30:58.546Z[GMT]")
-public class IdNumber {
+public class ErrorProperties {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private String value;
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  private String message;
 
-  public static final String SERIALIZED_NAME_STATE_CODE = "state_code";
-  @SerializedName(SERIALIZED_NAME_STATE_CODE)
-  private String stateCode;
+  public static final String SERIALIZED_NAME_FIELDS = "fields";
+  @SerializedName(SERIALIZED_NAME_FIELDS)
+  private Map<String, Object> fields = new HashMap<>();
 
-  public IdNumber type(String type) {
+  public ErrorProperties type(String type) {
     this.type = type;
     return this;
   }
 
    /**
-   * Type of ID number. Valid values are &#x60;ssn&#x60;, &#x60;social_insurance&#x60;, &#x60;tax_id&#x60;, &#x60;identity_card&#x60;, &#x60;passport&#x60; and &#x60;driving_license&#x60;
+   * Get type
    * @return type
   **/
-  @ApiModelProperty(value = "Type of ID number. Valid values are `ssn`, `social_insurance`, `tax_id`, `identity_card`, `passport` and `driving_license`")
+  @ApiModelProperty(value = "")
   public String getType() {
     return type;
   }
@@ -59,40 +62,48 @@ public class IdNumber {
     this.type = type;
   }
 
-  public IdNumber value(String value) {
-    this.value = value;
+  public ErrorProperties message(String message) {
+    this.message = message;
     return this;
   }
 
    /**
-   * Value of ID number
-   * @return value
+   * Get message
+   * @return message
   **/
-  @ApiModelProperty(value = "Value of ID number")
-  public String getValue() {
-    return value;
+  @ApiModelProperty(value = "")
+  public String getMessage() {
+    return message;
   }
 
-  public void setValue(String value) {
-    this.value = value;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
-  public IdNumber stateCode(String stateCode) {
-    this.stateCode = stateCode;
+  public ErrorProperties fields(Map<String, Object> fields) {
+    this.fields = fields;
+    return this;
+  }
+
+  public ErrorProperties putFieldsItem(String key, Object fieldsItem) {
+    if (this.fields == null) {
+      this.fields = new HashMap<>();
+    }
+    this.fields.put(key, fieldsItem);
     return this;
   }
 
    /**
-   * Two letter code of issuing state (state-issued driving licenses only)
-   * @return stateCode
+   * Get fields
+   * @return fields
   **/
-  @ApiModelProperty(value = "Two letter code of issuing state (state-issued driving licenses only)")
-  public String getStateCode() {
-    return stateCode;
+  @ApiModelProperty(value = "")
+  public Map<String, Object> getFields() {
+    return fields;
   }
 
-  public void setStateCode(String stateCode) {
-    this.stateCode = stateCode;
+  public void setFields(Map<String, Object> fields) {
+    this.fields = fields;
   }
 
 
@@ -104,25 +115,25 @@ public class IdNumber {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IdNumber idNumber = (IdNumber) o;
-    return Objects.equals(this.type, idNumber.type) &&
-        Objects.equals(this.value, idNumber.value) &&
-        Objects.equals(this.stateCode, idNumber.stateCode);
+    ErrorProperties errorProperties = (ErrorProperties) o;
+    return Objects.equals(this.type, errorProperties.type) &&
+        Objects.equals(this.message, errorProperties.message) &&
+        Objects.equals(this.fields, errorProperties.fields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, value, stateCode);
+    return Objects.hash(type, message, fields);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IdNumber {\n");
+    sb.append("class ErrorProperties {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("    stateCode: ").append(toIndentedString(stateCode)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
     sb.append("}");
     return sb.toString();
   }

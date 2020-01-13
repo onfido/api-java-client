@@ -1,7 +1,9 @@
 
+
 # Check
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The unique identifier for the check. Read-only. |  [optional]
@@ -10,17 +12,16 @@ Name | Type | Description | Notes
 **status** | **String** | The current state of the check in the checking process. Read-only. |  [optional]
 **result** | **String** | The overall result of the check, based on the results of the constituent reports. Read-only. |  [optional]
 **downloadUri** | **String** | A link to a PDF output of the check results. Append &#x60;.pdf&#x60; to get the pdf file. Read-only. |  [optional]
-**formUri** | **String** | A link to the applicant form, if the check is of type &#x60;standard&#x60;. Read-only. |  [optional]
-**redirectUri** | **String** | For &#x60;standard&#x60; checks, redirect to this URI when the applicant has submitted their data. Read-only. |  [optional]
+**formUri** | **String** | A link to the applicant form, if &#x60;applicant_provides_data&#x60; is &#x60;true&#x60;. Read-only. |  [optional]
+**redirectUri** | **String** | For checks where &#x60;applicant_provides_data&#x60; is &#x60;true&#x60;, redirect to this URI when the applicant has submitted their data. Read-only. |  [optional]
 **resultsUri** | **String** | A link to the corresponding results page on the Onfido dashboard. |  [optional]
-**type** | **String** | The type of the check, &#x60;standard&#x60; or &#x60;express&#x60;. | 
-**reportTypeGroups** | **List&lt;String&gt;** | Array containing ids of the Report type groups being requested for. Write-only. |  [optional]
+**reportNames** | **List&lt;String&gt;** | An array of report names (strings). |  [optional]
+**applicantId** | **String** | The ID of the applicant to do the check on. |  [optional]
 **tags** | **List&lt;String&gt;** | Array of tags being assigned to this check. |  [optional]
-**suppressFormEmails** | **Boolean** | For standard checks, applicant form will not be automatically sent if this is set to true. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only. Defaults to false.  |  [optional]
-**chargeApplicantForCheck** | **Boolean** | For standard checks, applicants will be presented with a mandatory payment screen before they can submit the applicant form, if this is set to true. In this case, your account will not be charged. Write-only. Defaults to false.  |  [optional]
-**brandId** | **String** | ID of the brand under which the check should be conducted. Write-only. |  [optional]
-**asynchronous** | **Boolean** | If this is set to true, we will queue checks for processing and return a response immediately. You can configure webhooks to notify you when the report is complete. Write-only. Defaults to false.  |  [optional]
-**reports** | [**List&lt;Report&gt;**](Report.md) | An array of reports. |  [optional]
+**applicantProvidesData** | **Boolean** | Send an applicant form to applicant to complete to proceed with check. Defaults to false.  |  [optional]
+**suppressFormEmails** | **Boolean** | For checks where &#x60;applicant_provides_data&#x60; is &#x60;true&#x60;, applicant form will not be automatically sent if &#x60;suppress_form_emails&#x60; is set to &#x60;true&#x60;. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only. Defaults to false.  |  [optional]
+**asynchronous** | **Boolean** | Defaults to &#x60;true&#x60;. Write-only. If set to &#x60;false&#x60;, you will only receive a response when all reports in your check have completed.  |  [optional]
+**reportIds** | **List&lt;String&gt;** | An array of report ids. |  [optional]
 
 
 

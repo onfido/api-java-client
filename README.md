@@ -1,8 +1,8 @@
 # onfido-java
 
 Onfido API
-- API version: 2.0.0
-  - Build date: 2019-11-13T10:18:58.718Z[GMT]
+- API version: 3.0.0
+  - Build date: 2020-01-13T16:30:58.546Z[GMT]
 
 The Onfido API is used to submit check requests.
 
@@ -41,7 +41,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.onfido</groupId>
   <artifactId>onfido-java</artifactId>
-  <version>4.3.0</version>
+  <version>5.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -51,7 +51,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.onfido:onfido-java:4.3.0"
+compile "com.onfido:onfido-java:5.0.0"
 ```
 
 ### Others
@@ -64,7 +64,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/onfido-java-4.3.0.jar`
+* `target/onfido-java-5.0.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -91,47 +91,43 @@ public class Example {
         tokenAuth.setApiKeyPrefix("Token");
 
         // Limit the at-rest region, if needed (optional, see https://documentation.onfido.com/#regions)
-        // defaultClient.setBasePath("https://api.us.onfido.com/v2");
+        // defaultClient.setBasePath("https://api.us.onfido.com/v3");
 
-        DefaultApi api = new DefaultApi();
+        DefaultApi apiInstance = new DefaultApi();
 
         // Setting applicant details
-        Applicant applicant = new Applicant();
-        applicant.setFirstName("John");
-        applicant.setLastName("Smith");
-        applicant.setDob(LocalDate.parse("1980-01-22"));
-        applicant.setCountry("GBR");
+
+        Applicant applicantDetails = new Applicant();
+        applicantDetails.setFirstName("Jane");
+        applicantDetails.setLastName("Doe");
+        applicantDetails.setDob(LocalDate.parse("1990-01-31"));
 
         Address address = new Address();
-        address.setBuildingNumber("100");
         address.setStreet("Main Street");
         address.setTown("London");
         address.setPostcode("SW4 6EH");
         address.setCountry("GBR");
 
-        List<Address> addresses = new ArrayList<Address>();
-        addresses.add(address);
-        applicant.setAddresses(addresses);
+        applicantDetails.setAddress(address);
 
         // Setting check details
-        Check check = new Check();
-        check.setType("express");
 
-        Report report = new Report();
-        report.setName("identity");
+        Check checkData = new Check();
 
-        List<Report> reports = new ArrayList<Report>();
-        reports.add(report);
-        check.setReports(reports);
+        List<String> reportNames = new ArrayList<String>();
+        reportNames.add("identity_standard");
+        checkData.setReportNames(reportNames);
+
+        // Create an applicant and then a check with an Identity report
 
         try {
-            Applicant newApplicant = api.createApplicant(applicant);
+            Applicant newApplicant = apiInstance.createApplicant(applicantDetails);
             String applicantId = newApplicant.getId();
             System.out.println("Applicant ID: " + applicantId);
-            Check newCheck = api.createCheck(applicantId, check);
+            checkData.setApplicantId(applicantId);
+            Check newCheck = apiInstance.createCheck(checkData);
             System.out.println(newCheck);
         } catch (ApiException e) {
-            System.err.println("Exception creating an applicant/check");
             System.err.println(e.getResponseBody());
         }
     }
@@ -141,60 +137,56 @@ public class Example {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.onfido.com/v2*
+All URIs are relative to *https://api.onfido.com/v3*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**cancelReport**](docs/DefaultApi.md#cancelReport) | **POST** /checks/{check_id}/reports/{report_id}/cancel | This endpoint is for cancelling individual paused reports.
+*DefaultApi* | [**cancelReport**](docs/DefaultApi.md#cancelReport) | **POST** /reports/{report_id}/cancel | This endpoint is for cancelling individual paused reports.
 *DefaultApi* | [**createApplicant**](docs/DefaultApi.md#createApplicant) | **POST** /applicants | Create Applicant
-*DefaultApi* | [**createCheck**](docs/DefaultApi.md#createCheck) | **POST** /applicants/{applicant_id}/checks | Create a check
+*DefaultApi* | [**createCheck**](docs/DefaultApi.md#createCheck) | **POST** /checks | Create a check
 *DefaultApi* | [**createWebhook**](docs/DefaultApi.md#createWebhook) | **POST** /webhooks | Create a webhook
 *DefaultApi* | [**deleteWebhook**](docs/DefaultApi.md#deleteWebhook) | **DELETE** /webhooks/{webhook_id} | Delete a webhook
 *DefaultApi* | [**destroyApplicant**](docs/DefaultApi.md#destroyApplicant) | **DELETE** /applicants/{applicant_id} | Delete Applicant
-*DefaultApi* | [**downloadDocument**](docs/DefaultApi.md#downloadDocument) | **GET** /applicants/{applicant_id}/documents/{document_id}/download | Download a documents raw data
+*DefaultApi* | [**downloadDocument**](docs/DefaultApi.md#downloadDocument) | **GET** /documents/{document_id}/download | Download a documents raw data
 *DefaultApi* | [**downloadLivePhoto**](docs/DefaultApi.md#downloadLivePhoto) | **GET** /live_photos/{live_photo_id}/download | Download live photo
 *DefaultApi* | [**downloadLiveVideo**](docs/DefaultApi.md#downloadLiveVideo) | **GET** /live_videos/{live_video_id}/download | Download live video
 *DefaultApi* | [**editWebhook**](docs/DefaultApi.md#editWebhook) | **PUT** /webhooks/{webhook_id} | Edit a webhook
 *DefaultApi* | [**findAddresses**](docs/DefaultApi.md#findAddresses) | **GET** /addresses/pick | Search for addresses by postcode
 *DefaultApi* | [**findApplicant**](docs/DefaultApi.md#findApplicant) | **GET** /applicants/{applicant_id} | Retrieve Applicant
-*DefaultApi* | [**findCheck**](docs/DefaultApi.md#findCheck) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
-*DefaultApi* | [**findDocument**](docs/DefaultApi.md#findDocument) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
+*DefaultApi* | [**findCheck**](docs/DefaultApi.md#findCheck) | **GET** /checks/{check_id} | Retrieve a Check
+*DefaultApi* | [**findDocument**](docs/DefaultApi.md#findDocument) | **GET** /documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 *DefaultApi* | [**findLivePhoto**](docs/DefaultApi.md#findLivePhoto) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
 *DefaultApi* | [**findLiveVideo**](docs/DefaultApi.md#findLiveVideo) | **GET** /live_videos/{live_video_id} | Retrieve live video
-*DefaultApi* | [**findReport**](docs/DefaultApi.md#findReport) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
-*DefaultApi* | [**findReportTypeGroup**](docs/DefaultApi.md#findReportTypeGroup) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
+*DefaultApi* | [**findReport**](docs/DefaultApi.md#findReport) | **GET** /reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 *DefaultApi* | [**findWebhook**](docs/DefaultApi.md#findWebhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
 *DefaultApi* | [**generateSdkToken**](docs/DefaultApi.md#generateSdkToken) | **POST** /sdk_token | Generate a SDK token
 *DefaultApi* | [**listApplicants**](docs/DefaultApi.md#listApplicants) | **GET** /applicants | List Applicants
-*DefaultApi* | [**listChecks**](docs/DefaultApi.md#listChecks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
-*DefaultApi* | [**listDocuments**](docs/DefaultApi.md#listDocuments) | **GET** /applicants/{applicant_id}/documents | List documents
+*DefaultApi* | [**listChecks**](docs/DefaultApi.md#listChecks) | **GET** /checks | Retrieve Checks
+*DefaultApi* | [**listDocuments**](docs/DefaultApi.md#listDocuments) | **GET** /documents | List documents
 *DefaultApi* | [**listLivePhotos**](docs/DefaultApi.md#listLivePhotos) | **GET** /live_photos | List live photos
 *DefaultApi* | [**listLiveVideos**](docs/DefaultApi.md#listLiveVideos) | **GET** /live_videos | List live videos
-*DefaultApi* | [**listReportTypeGroups**](docs/DefaultApi.md#listReportTypeGroups) | **GET** /report_type_groups | Retrieve all report type groups
-*DefaultApi* | [**listReports**](docs/DefaultApi.md#listReports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
+*DefaultApi* | [**listReports**](docs/DefaultApi.md#listReports) | **GET** /reports | All the reports belonging to a particular check can be listed from this endpoint.
 *DefaultApi* | [**listWebhooks**](docs/DefaultApi.md#listWebhooks) | **GET** /webhooks | List webhooks
 *DefaultApi* | [**restoreApplicant**](docs/DefaultApi.md#restoreApplicant) | **POST** /applicants/{applicant_id}/restore | Restore Applicant
 *DefaultApi* | [**resumeCheck**](docs/DefaultApi.md#resumeCheck) | **POST** /checks/{check_id}/resume | Resume a Check
-*DefaultApi* | [**resumeReport**](docs/DefaultApi.md#resumeReport) | **POST** /checks/{check_id}/reports/{report_id}/resume | This endpoint is for resuming individual paused reports.
+*DefaultApi* | [**resumeReport**](docs/DefaultApi.md#resumeReport) | **POST** /reports/{report_id}/resume | This endpoint is for resuming individual paused reports.
 *DefaultApi* | [**updateApplicant**](docs/DefaultApi.md#updateApplicant) | **PUT** /applicants/{applicant_id} | Update Applicant
-*DefaultApi* | [**uploadDocument**](docs/DefaultApi.md#uploadDocument) | **POST** /applicants/{applicant_id}/documents | Upload a document
+*DefaultApi* | [**uploadDocument**](docs/DefaultApi.md#uploadDocument) | **POST** /documents | Upload a document
 *DefaultApi* | [**uploadLivePhoto**](docs/DefaultApi.md#uploadLivePhoto) | **POST** /live_photos | Upload live photo
 
 
 ## Documentation for Models
 
  - [Address](docs/Address.md)
+ - [AddressesList](docs/AddressesList.md)
  - [Applicant](docs/Applicant.md)
  - [ApplicantsList](docs/ApplicantsList.md)
  - [Check](docs/Check.md)
- - [CheckCommon](docs/CheckCommon.md)
- - [CheckWithReportIds](docs/CheckWithReportIds.md)
  - [ChecksList](docs/ChecksList.md)
  - [Document](docs/Document.md)
  - [DocumentsList](docs/DocumentsList.md)
  - [Error](docs/Error.md)
- - [GenericAddress](docs/GenericAddress.md)
- - [GenericAddressesList](docs/GenericAddressesList.md)
+ - [ErrorProperties](docs/ErrorProperties.md)
  - [IdNumber](docs/IdNumber.md)
  - [LivePhoto](docs/LivePhoto.md)
  - [LivePhotosList](docs/LivePhotosList.md)
@@ -202,13 +194,8 @@ Class | Method | HTTP request | Description
  - [LiveVideosList](docs/LiveVideosList.md)
  - [Report](docs/Report.md)
  - [ReportDocument](docs/ReportDocument.md)
- - [ReportOption](docs/ReportOption.md)
- - [ReportType](docs/ReportType.md)
- - [ReportTypeGroup](docs/ReportTypeGroup.md)
- - [ReportTypeGroupsList](docs/ReportTypeGroupsList.md)
  - [ReportsList](docs/ReportsList.md)
- - [SdkTokenRequest](docs/SdkTokenRequest.md)
- - [SdkTokenResponse](docs/SdkTokenResponse.md)
+ - [SdkToken](docs/SdkToken.md)
  - [Webhook](docs/Webhook.md)
  - [WebhooksList](docs/WebhooksList.md)
 

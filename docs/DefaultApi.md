@@ -1,48 +1,46 @@
 # DefaultApi
 
-All URIs are relative to *https://api.onfido.com/v2*
+All URIs are relative to *https://api.onfido.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelReport**](DefaultApi.md#cancelReport) | **POST** /checks/{check_id}/reports/{report_id}/cancel | This endpoint is for cancelling individual paused reports.
+[**cancelReport**](DefaultApi.md#cancelReport) | **POST** /reports/{report_id}/cancel | This endpoint is for cancelling individual paused reports.
 [**createApplicant**](DefaultApi.md#createApplicant) | **POST** /applicants | Create Applicant
-[**createCheck**](DefaultApi.md#createCheck) | **POST** /applicants/{applicant_id}/checks | Create a check
+[**createCheck**](DefaultApi.md#createCheck) | **POST** /checks | Create a check
 [**createWebhook**](DefaultApi.md#createWebhook) | **POST** /webhooks | Create a webhook
 [**deleteWebhook**](DefaultApi.md#deleteWebhook) | **DELETE** /webhooks/{webhook_id} | Delete a webhook
 [**destroyApplicant**](DefaultApi.md#destroyApplicant) | **DELETE** /applicants/{applicant_id} | Delete Applicant
-[**downloadDocument**](DefaultApi.md#downloadDocument) | **GET** /applicants/{applicant_id}/documents/{document_id}/download | Download a documents raw data
+[**downloadDocument**](DefaultApi.md#downloadDocument) | **GET** /documents/{document_id}/download | Download a documents raw data
 [**downloadLivePhoto**](DefaultApi.md#downloadLivePhoto) | **GET** /live_photos/{live_photo_id}/download | Download live photo
 [**downloadLiveVideo**](DefaultApi.md#downloadLiveVideo) | **GET** /live_videos/{live_video_id}/download | Download live video
 [**editWebhook**](DefaultApi.md#editWebhook) | **PUT** /webhooks/{webhook_id} | Edit a webhook
 [**findAddresses**](DefaultApi.md#findAddresses) | **GET** /addresses/pick | Search for addresses by postcode
 [**findApplicant**](DefaultApi.md#findApplicant) | **GET** /applicants/{applicant_id} | Retrieve Applicant
-[**findCheck**](DefaultApi.md#findCheck) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
-[**findDocument**](DefaultApi.md#findDocument) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
+[**findCheck**](DefaultApi.md#findCheck) | **GET** /checks/{check_id} | Retrieve a Check
+[**findDocument**](DefaultApi.md#findDocument) | **GET** /documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 [**findLivePhoto**](DefaultApi.md#findLivePhoto) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
 [**findLiveVideo**](DefaultApi.md#findLiveVideo) | **GET** /live_videos/{live_video_id} | Retrieve live video
-[**findReport**](DefaultApi.md#findReport) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
-[**findReportTypeGroup**](DefaultApi.md#findReportTypeGroup) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
+[**findReport**](DefaultApi.md#findReport) | **GET** /reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 [**findWebhook**](DefaultApi.md#findWebhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
 [**generateSdkToken**](DefaultApi.md#generateSdkToken) | **POST** /sdk_token | Generate a SDK token
 [**listApplicants**](DefaultApi.md#listApplicants) | **GET** /applicants | List Applicants
-[**listChecks**](DefaultApi.md#listChecks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
-[**listDocuments**](DefaultApi.md#listDocuments) | **GET** /applicants/{applicant_id}/documents | List documents
+[**listChecks**](DefaultApi.md#listChecks) | **GET** /checks | Retrieve Checks
+[**listDocuments**](DefaultApi.md#listDocuments) | **GET** /documents | List documents
 [**listLivePhotos**](DefaultApi.md#listLivePhotos) | **GET** /live_photos | List live photos
 [**listLiveVideos**](DefaultApi.md#listLiveVideos) | **GET** /live_videos | List live videos
-[**listReportTypeGroups**](DefaultApi.md#listReportTypeGroups) | **GET** /report_type_groups | Retrieve all report type groups
-[**listReports**](DefaultApi.md#listReports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
+[**listReports**](DefaultApi.md#listReports) | **GET** /reports | All the reports belonging to a particular check can be listed from this endpoint.
 [**listWebhooks**](DefaultApi.md#listWebhooks) | **GET** /webhooks | List webhooks
 [**restoreApplicant**](DefaultApi.md#restoreApplicant) | **POST** /applicants/{applicant_id}/restore | Restore Applicant
 [**resumeCheck**](DefaultApi.md#resumeCheck) | **POST** /checks/{check_id}/resume | Resume a Check
-[**resumeReport**](DefaultApi.md#resumeReport) | **POST** /checks/{check_id}/reports/{report_id}/resume | This endpoint is for resuming individual paused reports.
+[**resumeReport**](DefaultApi.md#resumeReport) | **POST** /reports/{report_id}/resume | This endpoint is for resuming individual paused reports.
 [**updateApplicant**](DefaultApi.md#updateApplicant) | **PUT** /applicants/{applicant_id} | Update Applicant
-[**uploadDocument**](DefaultApi.md#uploadDocument) | **POST** /applicants/{applicant_id}/documents | Upload a document
+[**uploadDocument**](DefaultApi.md#uploadDocument) | **POST** /documents | Upload a document
 [**uploadLivePhoto**](DefaultApi.md#uploadLivePhoto) | **POST** /live_photos | Upload live photo
 
 
 <a name="cancelReport"></a>
 # **cancelReport**
-> cancelReport(checkId, reportId)
+> cancelReport(reportId)
 
 This endpoint is for cancelling individual paused reports.
 
@@ -63,10 +61,9 @@ tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
 tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String checkId = "checkId_example"; // String | 
 String reportId = "reportId_example"; // String | 
 try {
-    apiInstance.cancelReport(checkId, reportId);
+    apiInstance.cancelReport(reportId);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#cancelReport");
     e.printStackTrace();
@@ -77,7 +74,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **checkId** | **String**|  |
  **reportId** | **String**|  |
 
 ### Return type
@@ -147,7 +143,7 @@ Name | Type | Description  | Notes
 
 <a name="createCheck"></a>
 # **createCheck**
-> Check createCheck(applicantId, check)
+> Check createCheck(check)
 
 Create a check
 
@@ -168,10 +164,9 @@ tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
 tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String applicantId = "applicantId_example"; // String | 
 Check check = new Check(); // Check | 
 try {
-    Check result = apiInstance.createCheck(applicantId, check);
+    Check result = apiInstance.createCheck(check);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#createCheck");
@@ -183,7 +178,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicantId** | **String**|  |
  **check** | [**Check**](Check.md)|  |
 
 ### Return type
@@ -355,7 +349,7 @@ null (empty response body)
 
 <a name="downloadDocument"></a>
 # **downloadDocument**
-> File downloadDocument(applicantId, documentId)
+> File downloadDocument(documentId)
 
 Download a documents raw data
 
@@ -376,10 +370,9 @@ tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
 tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String applicantId = "applicantId_example"; // String | 
 String documentId = "documentId_example"; // String | 
 try {
-    File result = apiInstance.downloadDocument(applicantId, documentId);
+    File result = apiInstance.downloadDocument(documentId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#downloadDocument");
@@ -391,7 +384,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicantId** | **String**|  |
  **documentId** | **String**|  |
 
 ### Return type
@@ -571,7 +563,7 @@ Name | Type | Description  | Notes
 
 <a name="findAddresses"></a>
 # **findAddresses**
-> GenericAddressesList findAddresses(postcode)
+> AddressesList findAddresses(postcode)
 
 Search for addresses by postcode
 
@@ -594,7 +586,7 @@ tokenAuth.setApiKeyPrefix("Token");
 DefaultApi apiInstance = new DefaultApi();
 String postcode = "postcode_example"; // String | 
 try {
-    GenericAddressesList result = apiInstance.findAddresses(postcode);
+    AddressesList result = apiInstance.findAddresses(postcode);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findAddresses");
@@ -610,7 +602,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GenericAddressesList**](GenericAddressesList.md)
+[**AddressesList**](AddressesList.md)
 
 ### Authorization
 
@@ -675,7 +667,7 @@ Name | Type | Description  | Notes
 
 <a name="findCheck"></a>
 # **findCheck**
-> CheckWithReportIds findCheck(applicantId, checkId)
+> Check findCheck(checkId)
 
 Retrieve a Check
 
@@ -696,10 +688,9 @@ tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
 tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String applicantId = "applicantId_example"; // String | 
 String checkId = "checkId_example"; // String | 
 try {
-    CheckWithReportIds result = apiInstance.findCheck(applicantId, checkId);
+    Check result = apiInstance.findCheck(checkId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findCheck");
@@ -711,12 +702,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicantId** | **String**|  |
  **checkId** | **String**|  |
 
 ### Return type
 
-[**CheckWithReportIds**](CheckWithReportIds.md)
+[**Check**](Check.md)
 
 ### Authorization
 
@@ -729,7 +719,7 @@ Name | Type | Description  | Notes
 
 <a name="findDocument"></a>
 # **findDocument**
-> Document findDocument(applicantId, documentId)
+> Document findDocument(documentId)
 
 A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 
@@ -750,10 +740,9 @@ tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
 tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String applicantId = "applicantId_example"; // String | 
 String documentId = "documentId_example"; // String | 
 try {
-    Document result = apiInstance.findDocument(applicantId, documentId);
+    Document result = apiInstance.findDocument(documentId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findDocument");
@@ -765,7 +754,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicantId** | **String**|  |
  **documentId** | **String**|  |
 
 ### Return type
@@ -887,7 +875,7 @@ Name | Type | Description  | Notes
 
 <a name="findReport"></a>
 # **findReport**
-> Report findReport(checkId, reportId)
+> Report findReport(reportId)
 
 A single report can be retrieved using this endpoint with the corresponding unique identifier.
 
@@ -908,10 +896,9 @@ tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
 tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String checkId = "checkId_example"; // String | 
 String reportId = "reportId_example"; // String | 
 try {
-    Report result = apiInstance.findReport(checkId, reportId);
+    Report result = apiInstance.findReport(reportId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#findReport");
@@ -923,64 +910,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **checkId** | **String**|  |
  **reportId** | **String**|  |
 
 ### Return type
 
 [**Report**](Report.md)
-
-### Authorization
-
-[Token](../README.md#Token)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="findReportTypeGroup"></a>
-# **findReportTypeGroup**
-> ReportTypeGroup findReportTypeGroup(reportTypeGroupId)
-
-Retrieve single report type group object
-
-### Example
-```java
-// Import classes:
-//import com.onfido.ApiClient;
-//import com.onfido.ApiException;
-//import com.onfido.Configuration;
-//import com.onfido.auth.*;
-//import com.onfido.api.DefaultApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: Token
-ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
-tokenAuth.setApiKeyPrefix("Token");
-
-DefaultApi apiInstance = new DefaultApi();
-String reportTypeGroupId = "reportTypeGroupId_example"; // String | 
-try {
-    ReportTypeGroup result = apiInstance.findReportTypeGroup(reportTypeGroupId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#findReportTypeGroup");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **reportTypeGroupId** | **String**|  |
-
-### Return type
-
-[**ReportTypeGroup**](ReportTypeGroup.md)
 
 ### Authorization
 
@@ -1045,7 +979,7 @@ Name | Type | Description  | Notes
 
 <a name="generateSdkToken"></a>
 # **generateSdkToken**
-> SdkTokenResponse generateSdkToken(sdkTokenRequest)
+> SdkToken generateSdkToken(sdkToken)
 
 Generate a SDK token
 
@@ -1066,9 +1000,9 @@ tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
 tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-SdkTokenRequest sdkTokenRequest = new SdkTokenRequest(); // SdkTokenRequest | 
+SdkToken sdkToken = new SdkToken(); // SdkToken | 
 try {
-    SdkTokenResponse result = apiInstance.generateSdkToken(sdkTokenRequest);
+    SdkToken result = apiInstance.generateSdkToken(sdkToken);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#generateSdkToken");
@@ -1080,11 +1014,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sdkTokenRequest** | [**SdkTokenRequest**](SdkTokenRequest.md)|  |
+ **sdkToken** | [**SdkToken**](SdkToken.md)|  |
 
 ### Return type
 
-[**SdkTokenResponse**](SdkTokenResponse.md)
+[**SdkToken**](SdkToken.md)
 
 ### Authorization
 
@@ -1153,7 +1087,7 @@ Name | Type | Description  | Notes
 
 <a name="listChecks"></a>
 # **listChecks**
-> ChecksList listChecks(applicantId, page, perPage)
+> ChecksList listChecks(applicantId)
 
 Retrieve Checks
 
@@ -1175,10 +1109,8 @@ tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
 String applicantId = "applicantId_example"; // String | 
-Integer page = 1; // Integer | The page to return. The first page is `page=1`.
-Integer perPage = 20; // Integer | The number of objects per page.
 try {
-    ChecksList result = apiInstance.listChecks(applicantId, page, perPage);
+    ChecksList result = apiInstance.listChecks(applicantId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#listChecks");
@@ -1191,8 +1123,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicantId** | **String**|  |
- **page** | **Integer**| The page to return. The first page is &#x60;page&#x3D;1&#x60;. | [optional] [default to 1]
- **perPage** | **Integer**| The number of objects per page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1355,54 +1285,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LiveVideosList**](LiveVideosList.md)
-
-### Authorization
-
-[Token](../README.md#Token)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="listReportTypeGroups"></a>
-# **listReportTypeGroups**
-> ReportTypeGroupsList listReportTypeGroups()
-
-Retrieve all report type groups
-
-### Example
-```java
-// Import classes:
-//import com.onfido.ApiClient;
-//import com.onfido.ApiException;
-//import com.onfido.Configuration;
-//import com.onfido.auth.*;
-//import com.onfido.api.DefaultApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: Token
-ApiKeyAuth tokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("Token");
-tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
-tokenAuth.setApiKeyPrefix("Token");
-
-DefaultApi apiInstance = new DefaultApi();
-try {
-    ReportTypeGroupsList result = apiInstance.listReportTypeGroups();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#listReportTypeGroups");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**ReportTypeGroupsList**](ReportTypeGroupsList.md)
 
 ### Authorization
 
@@ -1617,7 +1499,7 @@ null (empty response body)
 
 <a name="resumeReport"></a>
 # **resumeReport**
-> resumeReport(checkId, reportId)
+> resumeReport(reportId)
 
 This endpoint is for resuming individual paused reports.
 
@@ -1638,10 +1520,9 @@ tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
 tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String checkId = "checkId_example"; // String | 
 String reportId = "reportId_example"; // String | 
 try {
-    apiInstance.resumeReport(checkId, reportId);
+    apiInstance.resumeReport(reportId);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#resumeReport");
     e.printStackTrace();
@@ -1652,7 +1533,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **checkId** | **String**|  |
  **reportId** | **String**|  |
 
 ### Return type
@@ -1749,7 +1629,7 @@ tokenAuth.setApiKey("token=" + "YOUR API TOKEN");
 tokenAuth.setApiKeyPrefix("Token");
 
 DefaultApi apiInstance = new DefaultApi();
-String applicantId = "applicantId_example"; // String | 
+String applicantId = "applicantId_example"; // String | The ID of the applicant whose document is being uploaded.
 String type = "type_example"; // String | The type of document.
 File file = new File("/path/to/file"); // File | The file to be uploaded.
 String side = "side_example"; // String | Either the `front` or `back` of the document.
@@ -1767,7 +1647,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicantId** | **String**|  |
+ **applicantId** | **String**| The ID of the applicant whose document is being uploaded. |
  **type** | **String**| The type of document. |
  **file** | **File**| The file to be uploaded. |
  **side** | **String**| Either the &#x60;front&#x60; or &#x60;back&#x60; of the document. | [optional]

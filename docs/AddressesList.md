@@ -1,10 +1,12 @@
 
-# GenericAddressesList
+
+# AddressesList
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**addresses** | [**List&lt;GenericAddress&gt;**](GenericAddress.md) |  |  [optional]
+**addresses** | [**List&lt;Address&gt;**](Address.md) |  |  [optional]
 
 
 
