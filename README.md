@@ -1,3 +1,7 @@
+# :warning: Please use [onfido-java](https://github.com/onfido/onfido-java) instead :warning:
+
+This library has been superseded by [onfido-java](https://github.com/onfido/onfido-java)
+
 # onfido-java
 
 Onfido API
